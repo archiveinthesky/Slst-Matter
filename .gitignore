@@ -11,6 +11,13 @@ MATTER/[Bb]uilds/
 MATTER/[Ll]ogs/
 MATTER/[Mm]emoryCaptures/
 
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Mm]emoryCaptures/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
