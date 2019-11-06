@@ -19,6 +19,8 @@ MATTER/[Mm]emoryCaptures/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
+
+
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 
