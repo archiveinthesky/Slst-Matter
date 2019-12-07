@@ -2,27 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuButton : MonoBehaviour
+public class menubutton : MonoBehaviour
 {
-	[SerializeField] MenuButtonController menuButtonController;
-	[SerializeField] Animator animator;
-	[SerializeField] AnimatorFunctions animatorFunctions;
-	[SerializeField] int thisIndex;
+    public Animator animator;
+    public int hideonstart;
+    private float originaly;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        originaly = this.GetComponent<RectTransform>().position.y;
+        if (hideonstart == 1)
+        {
+            gameObject.GetComponent<RectTransform>().position = new Vector3(gameObject.GetComponent<RectTransform>().position.x, 2000, gameObject.GetComponent<RectTransform>().position.z);
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
-		if(menuButtonController.index == thisIndex)
-		{
-			animator.SetBool ("selected", true);
-			if(Input.GetAxis ("Submit") == 1){
-				animator.SetBool ("pressed", true);
-			}else if (animator.GetBool ("pressed")){
-				animator.SetBool ("pressed", false);
-				animatorFunctions.disableOnce = true;
-			}
-		}else{
-			animator.SetBool ("selected", false);
-		}
+        
+    }
+
+    public void appear()
+    {
+        if (hideonstart == 1)
+        {
+            gameObject.GetComponent<RectTransform>().position = new Vector3(gameObject.GetComponent<RectTransform>().position.x, originaly, gameObject.GetComponent<RectTransform>().position.z);
+
+        }
+        animator.Play("intro");
+    }
+
+    public void exit()
+    {
+        animator.Play("press");
+    }
+
+    void destroyself()
+    {
+         Destroy(gameObject);
     }
 }
