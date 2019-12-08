@@ -6,6 +6,7 @@ public class menubutton : MonoBehaviour
 {
     public Animator animator;
     public int hideonstart;
+    public int objtype;
     private float originaly;
 
     // Start is called before the first frame update
@@ -31,7 +32,18 @@ public class menubutton : MonoBehaviour
             gameObject.GetComponent<RectTransform>().position = new Vector3(gameObject.GetComponent<RectTransform>().position.x, originaly, gameObject.GetComponent<RectTransform>().position.z);
 
         }
-        animator.Play("intro");
+        
+        
+        
+        if (objtype == 0)
+        {
+            animator.Play("fadein");
+        }
+        else if (objtype == 1)
+        {
+            animator.Play("fadeinslot");
+        }
+        
     }
 
     public void exit()
