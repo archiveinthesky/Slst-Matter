@@ -37,7 +37,7 @@ public class menubutton : MonoBehaviour
         
         if (objtype == 0)
         {
-            animator.Play("fadein");
+            animator.Play("intro");
         }
         else if (objtype == 1)
         {
