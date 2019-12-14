@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class datacontrolmenu : MonoBehaviour
 {
 
@@ -25,7 +25,7 @@ public class datacontrolmenu : MonoBehaviour
     public void setslotvalues()
     {
         PlayerPrefs.DeleteAll();
-        /*PlayerPrefs.SetString("pps1ttln", "徐徐和風");
+        PlayerPrefs.SetString("pps1ttln", "徐徐和風");
         PlayerPrefs.SetInt("sl1d", 10);
         PlayerPrefs.SetInt("sl1h", 100);//*/
         slot1txttitle = sc1tile.GetComponent<Text>();
