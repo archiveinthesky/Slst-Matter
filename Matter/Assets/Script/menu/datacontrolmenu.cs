@@ -24,10 +24,10 @@ public class datacontrolmenu : MonoBehaviour
 
     public void setslotvalues()
     {
+        PlayerPrefs.DeleteAll();
         /*PlayerPrefs.SetString("pps1ttln", "徐徐和風");
         PlayerPrefs.SetInt("sl1d", 10);
-        PlayerPrefs.SetInt("sl1h", 100);*/
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("sl1h", 100);//*/
         slot1txttitle = sc1tile.GetComponent<Text>();
         slot2txttitle = sc2title.GetComponent<Text>();
         slot3txttitle = sc3title.GetComponent<Text>();
