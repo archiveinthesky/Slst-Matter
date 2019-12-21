@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class menuController : MonoBehaviour
 {
-    public Animator logosequenceanim;
-    public GameObject introblack;
+    public Animator logosequenceanim, canvasanim;
+    public GameObject logogo;
     public GameObject startgamebtn, contamebtn, gameoptibtn;
     public GameObject chosesavegobj, csslot1, csslot2, csslot3;
     private int slotstatus;
@@ -50,6 +50,8 @@ public class menuController : MonoBehaviour
         //logosequenceanim.Play("logo");
         //yield return new WaitForSeconds(5);
         //introblack.GetComponent<SpriteRenderer>().color = new Vector4(0,0,0,0);
+        canvasanim.Play("btnfadesequence");
+        yield return new WaitForSeconds(1.7f);
         startgamebtn.GetComponent<menubutton>().appear();
         yield return new WaitForSeconds(0.1f);
         contamebtn.GetComponent<menubutton>().appear();
@@ -59,7 +61,8 @@ public class menuController : MonoBehaviour
     }
 
     IEnumerator clickleave()
-    {
+    {   
+        Destroy(logogo);
         startgamebtn.GetComponent<menubutton>().exit();
         yield return new WaitForSeconds(0.1f);
         contamebtn.GetComponent<menubutton>().exit();
