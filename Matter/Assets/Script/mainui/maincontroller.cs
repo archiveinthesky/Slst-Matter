@@ -11,7 +11,7 @@ public class maincontroller : MonoBehaviour
         loadslot();
         
     }
-    // Update is called once per frame
+    // Update is called once per 8frame
     void Update()
     {
         
@@ -25,4 +25,6 @@ public class maincontroller : MonoBehaviour
         wateri = PlayerPrefs.GetInt("sl" + saveslot + "w");
         daysi = PlayerPrefs.GetInt("sl" + saveslot + "d");
     }
+
+    
 }

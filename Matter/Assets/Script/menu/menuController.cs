@@ -49,7 +49,6 @@ public class menuController : MonoBehaviour
     {
         //logosequenceanim.Play("logo");
         //yield return new WaitForSeconds(5);
-        //introblack.GetComponent<SpriteRenderer>().color = new Vector4(0,0,0,0);
         canvasanim.Play("btnfadesequence");
         yield return new WaitForSeconds(1.7f);
         startgamebtn.GetComponent<menubutton>().appear();
