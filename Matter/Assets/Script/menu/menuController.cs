@@ -5,92 +5,44 @@ using UnityEngine.UI;
 
 public class menuController : MonoBehaviour
 {
-    public Animator logosequenceanim, canvasanim;
-    public GameObject logogo;
-    public GameObject startgamebtn, contamebtn, gameoptibtn;
-    public GameObject chosesavegobj, csslot1, csslot2, csslot3;
-    private int slotstatus;
-    // Start is called before the first frame update
+    public GameObject logointro;
+    public GameObject canvas, startSlotGame, optionsBtn;
     void Start()
     {
-        slotstatus = 0;
-        StartCoroutine(appearmenu());   
+        canvas.SetActive(false);
+        playlogo();
     }
 
-    // Update is called once per frame
-    void Update()
+    void playlogo()
     {
-        
+        logointro.GetComponent<Animator>().Play("logo");
     }
 
-    public void startgame()
+    public void canvasin()
+    {
+        StartCoroutine(passiveCanvasin());
+    }
+
+    public void canvasout()
+    {
+        StartCoroutine(passiveCanvasout());
+    }
+
+    // passive programs below -------------------------------------------------
+
+    IEnumerator passiveCanvasin()
     {   
-        slotstatus = 1;
-        this.GetComponent<datacontrolmenu>().setslotvalues();
-        StartCoroutine(clickleave());
-        StartCoroutine(saveloadmenuin());
+        canvas.SetActive(true);
+        canvas.GetComponent<Animator>().Play("canvas-intro-fade");
+        yield return new WaitForSeconds(2.3f);
+        startSlotGame.GetComponent<Animator>().Play("enterSlot-intro-fade");
+        yield return new WaitForSeconds(1);
+        optionsBtn.GetComponent<Animator>().Play("optionsBtn-intro-fade");
     }
 
-    public void continuegame()
+    IEnumerator passiveCanvasout()
     {
-        slotstatus = 2;
-        this.GetComponent<datacontrolmenu>().setslotvalues();
-        StartCoroutine(clickleave());
-        StartCoroutine(saveloadmenuin());
-    }
-
-    public void gameoptions()
-    {
-        StartCoroutine(clickleave());
-    }
-
-
-    IEnumerator appearmenu()
-    {
-        //logosequenceanim.Play("logo");
-        //yield return new WaitForSeconds(5);
-        canvasanim.Play("btnfadesequence");
-        yield return new WaitForSeconds(1.7f);
-        startgamebtn.GetComponent<menubutton>().appear();
-        yield return new WaitForSeconds(0.1f);
-        contamebtn.GetComponent<menubutton>().appear();
-        yield return new WaitForSeconds(0.1f);
-        gameoptibtn.GetComponent<menubutton>().appear();
-        yield return new WaitForSeconds(0.1f);
-    }
-
-    IEnumerator clickleave()
-    {   
-        Destroy(logogo);
-        startgamebtn.GetComponent<menubutton>().exit();
-        yield return new WaitForSeconds(0.1f);
-        contamebtn.GetComponent<menubutton>().exit();
-        yield return new WaitForSeconds(0.1f);
-        gameoptibtn.GetComponent<menubutton>().exit();
-        yield return new WaitForSeconds(0.1f);
-
-    }
-
-    IEnumerator saveloadmenuin()
-    {
-        //Debug.Log("exeing");
-        yield return new WaitForSeconds(0.4f);
-        chosesavegobj.GetComponent<menubutton>().appear();
-        yield return new WaitForSeconds(0.1f);
-        csslot1.GetComponent<menubutton>().appear();
-        yield return new WaitForSeconds(0.1f);
-        csslot2.GetComponent<menubutton>().appear();
-        yield return new WaitForSeconds(0.1f);
-        csslot3.GetComponent<menubutton>().appear();
-        
-    }
-
-    public void slotonbtnclick(int callslotval)
-    {
-        if (slotstatus == 1){
-            this.GetComponent<datacontrolmenu>().createnewgame(callslotval);
-        } else if (slotstatus == 2) {
-            this.GetComponent<datacontrolmenu>().continuegame(callslotval);
-        }
+        canvas.GetComponent<Animator>().Play("canvas-outro-fade");
+        yield return new WaitForSeconds(1);
     }
 }
