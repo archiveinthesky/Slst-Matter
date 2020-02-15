@@ -7,8 +7,9 @@ public class menuController : MonoBehaviour
 {
     public GameObject logointro;
     public GameObject canvas, background, backgroundR, logo, startGame, options;
-    public GameObject slttl, sl1, sl2, sl3;
+    public GameObject slttl, backbtn, sl1, sl2, sl3;
     private int done;
+    public bool enableLogoAnimation;
     void Start()
     {
         canvas.SetActive(false);
@@ -16,9 +17,10 @@ public class menuController : MonoBehaviour
         sl1.SetActive(false);
         sl2.SetActive(false);
         sl3.SetActive(false);
-        //playlogo();
+        backbtn.SetActive(false);
         done = 0;
-        canvasin();
+        if (enableLogoAnimation){ logointro.SetActive(true); playlogo();}
+        else{canvasin();}
     }
 
     void playlogo()
@@ -43,6 +45,11 @@ public class menuController : MonoBehaviour
         StartCoroutine(passiveCallSlot());
     }
 
+    public void backSlot()
+    {
+        StartCoroutine(passiveExitSlot());
+    }
+
     public void showoptions()
     {
         StartCoroutine(passiveCanvasout());
@@ -58,7 +65,7 @@ public class menuController : MonoBehaviour
         startGame.SetActive(false);
         options.SetActive(false);
         backgroundR.SetActive(false);
-        yield return new WaitForSeconds(1.5f);
+        //yield return new WaitForSeconds(1.5f);
         backgroundR.SetActive(true);
         logo.transform.position = new Vector3(276,logo.transform.position.y,logo.transform.position.z);
         logo.SetActive(true);
@@ -78,7 +85,7 @@ public class menuController : MonoBehaviour
     {
         done = 0;
         iTween.MoveTo(logo, iTween.Hash("x", -2000, "time", 1.0f));
-        yield return new WaitForSeconds(0.3f);
+        //yield return new WaitForSeconds(0.3f);
         startGame.GetComponent<Animator>().Play("startgame-outro-fade");
         yield return new WaitForSeconds(0.2f);
         options.GetComponent<Animator>().Play("options-outro-fade");
@@ -93,7 +100,9 @@ public class menuController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.8f);
         slttl.SetActive(true);
+        backbtn.SetActive(true);
         slttl.GetComponent<Animator>().Play("slttl-intro-fade");
+        backbtn.GetComponent<Animator>().Play("slotBack-intro-fade");
         yield return new WaitForSeconds(0.2f);
         sl1.SetActive(true);
         sl1.GetComponent<Animator>().Play("s1-intro-fade");
@@ -103,5 +112,25 @@ public class menuController : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         sl3.SetActive(true);
         sl3.GetComponent<Animator>().Play("s3-intro-fade");
+    }
+
+    IEnumerator passiveExitSlot()
+    {
+        done = 0;
+        slttl.GetComponent<Animator>().Play("slttl-outro-fade");
+        backbtn.GetComponent<Animator>().Play("slotBack-outro-fade");
+        yield return new WaitForSeconds(0.2f);
+        sl1.GetComponent<Animator>().Play("s1-outro-fade");
+        yield return new WaitForSeconds(0.2f);
+        sl2.GetComponent<Animator>().Play("s2-outro-fade");
+        yield return new WaitForSeconds(0.2f);
+        sl3.GetComponent<Animator>().Play("s3-outro-fade");
+        yield return new WaitForSeconds(1);
+        slttl.SetActive(false);
+        backbtn.SetActive(false);
+        sl1.SetActive(false);
+        sl2.SetActive(false);
+        sl3.SetActive(false);
+        canvasin();
     }
 }
