@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class menuController : MonoBehaviour
 {
     public GameObject logointro;
-    public GameObject canvas, background, backgroundR, logo, startGame, options;
+    public GameObject canvas, background, logo, startGame, options;
     public GameObject slttl, backbtn, sl1, sl2, sl3;
     private int done;
     public bool enableLogoAnimation;
+    private bool firstrun;
     void Start()
     {
         canvas.SetActive(false);
@@ -18,6 +19,7 @@ public class menuController : MonoBehaviour
         sl2.SetActive(false);
         sl3.SetActive(false);
         backbtn.SetActive(false);
+        firstrun = true;
         done = 0;
         if (enableLogoAnimation){ logointro.SetActive(true); playlogo();}
         else{canvasin();}
@@ -55,50 +57,49 @@ public class menuController : MonoBehaviour
         StartCoroutine(passiveCanvasout());
     }
 
+    void optionsbuttonshow()
+    {
+        options.SetActive(true);
+        options.GetComponent<Animator>().Play("options-intro-fade");
+    }
+
+    void optionsclicked()
+    {
+        
+    }
+
     // passive programs below -------------------------------------------------
 
     IEnumerator passiveCanvasin()
     {   
+        optionsclicked();
         done = 0;
         canvas.SetActive(true);
         logo.SetActive(false);
         startGame.SetActive(false);
-        options.SetActive(false);
-        backgroundR.SetActive(false);
-        //yield return new WaitForSeconds(1.5f);
-        backgroundR.SetActive(true);
-        logo.transform.position = new Vector3(276,logo.transform.position.y,logo.transform.position.z);
+        if (firstrun) {optionsbuttonshow(); yield return new WaitForSeconds(1); firstrun = false;}
         logo.SetActive(true);
-        iTween.MoveTo(logo, iTween.Hash("x", -430, "time", 1.7f));
-        backgroundR.SetActive(false);
-        yield return new WaitForSeconds(1.5f);
+        logo.GetComponent<Animator>().Play("logo-intro");
+        yield return new WaitForSeconds(1);
         startGame.SetActive(true);
         startGame.GetComponent<Animator>().Play("startgame-intro-fade");
-        yield return new WaitForSeconds(0.5f);
-        options.SetActive(true);
-        options.GetComponent<Animator>().Play("options-intro-fade");
-        yield return new WaitForSeconds(1.2f);
         done = 1;
     }
 
     IEnumerator passiveCanvasout()
     {
         done = 0;
-        iTween.MoveTo(logo, iTween.Hash("x", -2000, "time", 1.0f));
-        //yield return new WaitForSeconds(0.3f);
+        logo.GetComponent<Animator>().Play("logo-outro");
         startGame.GetComponent<Animator>().Play("startgame-outro-fade");
-        yield return new WaitForSeconds(0.2f);
-        options.GetComponent<Animator>().Play("options-outro-fade");
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(1);
         logo.SetActive(false);
         startGame.SetActive(false);
-        options.SetActive(false);
         done = 1;
     }
 
     IEnumerator passiveCallSlot()
     {
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(1);
         slttl.SetActive(true);
         backbtn.SetActive(true);
         slttl.GetComponent<Animator>().Play("slttl-intro-fade");
