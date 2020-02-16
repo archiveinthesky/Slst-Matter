@@ -8,9 +8,9 @@ public class menuController : MonoBehaviour
     public GameObject logointro;
     public GameObject canvas, background, logo, startGame, options;
     public GameObject slttl, backbtn, sl1, sl2, sl3;
-    private int done;
+    private int instatus; // 1 = canvas, 2 = chose game, 3 = options menu
     public bool enableLogoAnimation;
-    private bool firstrun;
+    private bool firstrun, inOptions;
     void Start()
     {
         canvas.SetActive(false);
@@ -20,7 +20,7 @@ public class menuController : MonoBehaviour
         sl3.SetActive(false);
         backbtn.SetActive(false);
         firstrun = true;
-        done = 0;
+        inOptions = false;
         if (enableLogoAnimation){ logointro.SetActive(true); playlogo();}
         else{canvasin();}
     }
@@ -32,6 +32,7 @@ public class menuController : MonoBehaviour
 
     public void canvasin()
     {
+        instatus = 1;
         StartCoroutine(passiveCanvasin());
     }
 
@@ -42,6 +43,7 @@ public class menuController : MonoBehaviour
 
     public void choseSlot()
     {
+        instatus = 2;
         StartCoroutine(passiveCanvasout());
         GetComponent<datacontrol>().setslotvals();
         StartCoroutine(passiveCallSlot());
@@ -52,29 +54,30 @@ public class menuController : MonoBehaviour
         StartCoroutine(passiveExitSlot());
     }
 
-    public void showoptions()
-    {
-        StartCoroutine(passiveCanvasout());
-    }
-
     void optionsbuttonshow()
     {
         options.SetActive(true);
         options.GetComponent<Animator>().Play("options-intro-fade");
     }
 
-    void optionsclicked()
+    public void optionsclicked()
     {
-        Debug.Log("options clicked");
-        options.GetComponent<Transform>().Rotate(0,0,30);
+        if (!inOptions && instatus == 1) {StopCoroutine(passiveCanvasin()); canvasout();}
+        else if (!inOptions && instatus == 2) {StopCoroutine(passiveCallSlot()); backSlot();}
+        if (!inOptions) {options.GetComponent<optionsMenu>().entermenu(); inOptions = true;}
+        else {options.GetComponent<optionsMenu>().exitmenu(); inOptions = false;}
     }
 
+    public void returnFromMenu()
+    {
+        Debug.Log("mC returnFromMenu called");
+        if (instatus == 1) {canvasin();}
+        else if (instatus == 2) {choseSlot();}
+    }
     // passive programs below -------------------------------------------------
 
     IEnumerator passiveCanvasin()
     {   
-        optionsclicked();
-        done = 0;
         canvas.SetActive(true);
         logo.SetActive(false);
         startGame.SetActive(false);
@@ -84,18 +87,15 @@ public class menuController : MonoBehaviour
         yield return new WaitForSeconds(1);
         startGame.SetActive(true);
         startGame.GetComponent<Animator>().Play("startgame-intro-fade");
-        done = 1;
     }
 
     IEnumerator passiveCanvasout()
     {
-        done = 0;
         logo.GetComponent<Animator>().Play("logo-outro");
         startGame.GetComponent<Animator>().Play("startgame-outro-fade");
         yield return new WaitForSeconds(1);
         logo.SetActive(false);
         startGame.SetActive(false);
-        done = 1;
     }
 
     IEnumerator passiveCallSlot()
@@ -118,7 +118,6 @@ public class menuController : MonoBehaviour
 
     IEnumerator passiveExitSlot()
     {
-        done = 0;
         slttl.GetComponent<Animator>().Play("slttl-outro-fade");
         backbtn.GetComponent<Animator>().Play("slotBack-outro-fade");
         yield return new WaitForSeconds(0.2f);
@@ -135,4 +134,5 @@ public class menuController : MonoBehaviour
         sl3.SetActive(false);
         canvasin();
     }
+
 }
