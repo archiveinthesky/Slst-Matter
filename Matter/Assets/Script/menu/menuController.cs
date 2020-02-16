@@ -65,7 +65,8 @@ public class menuController : MonoBehaviour
 
     void optionsclicked()
     {
-        
+        Debug.Log("options clicked");
+        options.GetComponent<Transform>().Rotate(0,0,30);
     }
 
     // passive programs below -------------------------------------------------
