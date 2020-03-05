@@ -10,8 +10,9 @@ public class menuController : MonoBehaviour
     public GameObject slttl, backbtn, sl1, sl2, sl3;
     public GameObject entername, et_input, et_confirm, et_return;
     private int instatus; // 1 = canvas, 2 = chose game, 3 = options menu
+    private int selectedSlot;
     public bool enableLogoAnimation;
-    private bool firstrun, inOptions;
+    private bool firstrun, inOptions, creatingSlots;
     void Start()
     {
         canvas.SetActive(false);
@@ -20,8 +21,10 @@ public class menuController : MonoBehaviour
         sl2.SetActive(false);
         sl3.SetActive(false);
         backbtn.SetActive(false);
+        creatingSlots = false;
         firstrun = true;
         inOptions = false;
+        selectedSlot = 0;
         if (enableLogoAnimation){ logointro.SetActive(true); playlogo();}
         else{canvasin();}
     }
@@ -45,7 +48,8 @@ public class menuController : MonoBehaviour
     public void choseSlot()
     {
         instatus = 2;
-        StartCoroutine(passiveCanvasout());
+        if (!creatingSlots){
+        StartCoroutine(passiveCanvasout());}
         GetComponent<datacontrol>().setslotvals();
         StartCoroutine(passiveCallSlot());
     }
@@ -75,6 +79,50 @@ public class menuController : MonoBehaviour
         if (instatus == 1) {canvasin();}
         else if (instatus == 2) {choseSlot();}
     }
+
+    public void createNewSlot(int slotval)
+    {
+        backSlot();
+        entername.transform.position = new Vector3(entername.transform.position.x, 2000, entername.transform.position.z);
+        entername.SetActive(true);
+        selectedSlot = slotval;
+        creatingSlots = true;
+        iTween.MoveTo(entername, iTween.Hash("time", 1, "delay", 1, "y", 0, "oncomplete", "enableEnterGameBool", "oncompletetarget", gameObject));
+    }
+
+    public void enableEnterGameBool()
+    {
+        creatingSlots = true;
+    }
+
+
+    public void enterGameSetReturn()
+    {
+        entername.SetActive(false);
+        creatingSlots = false;
+    }
+
+    public void enterNameConfirm()
+    {
+        if (creatingSlots)
+        {
+            GetComponent<datacontrol>().createGame(selectedSlot, et_input.GetComponent<Text>().text);
+        }
+    }
+
+    public void enterNameReturn()
+    {
+        if (creatingSlots)
+        {
+            logo.SetActive(true);
+            startGame.SetActive(true);
+            iTween.MoveTo(entername, iTween.Hash("time", 1, "y", 2000, "oncomplete", "enterGameSetReturn", "oncompletetarget", gameObject));
+            GetComponent<datacontrol>().wipeSlot(selectedSlot);
+            canvasin();
+        }
+    }
+
+
     // passive programs below -------------------------------------------------
 
     IEnumerator passiveCanvasin()
@@ -135,7 +183,8 @@ public class menuController : MonoBehaviour
         sl1.SetActive(false);
         sl2.SetActive(false);
         sl3.SetActive(false);
-        canvasin();
+        if (!creatingSlots){
+        canvasin();}
     }
 
 }

@@ -130,7 +130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &23140587
 RectTransform:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &262891926
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2005,7 +2005,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2059455728}
+        m_MethodName: enterNameConfirm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1621378285
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2121,7 +2132,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1799491838}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2059455730}
+        m_MethodName: clickedSlot2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1799491840
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2492,7 +2514,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1919951113}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2059455730}
+        m_MethodName: clickedSlot3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1919951115
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2629,7 +2662,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1927856570}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2059455728}
+        m_MethodName: enterNameReturn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1927856572
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2756,11 +2800,11 @@ MonoBehaviour:
   sl1: {fileID: 8849405526048582912}
   sl2: {fileID: 1799491836}
   sl3: {fileID: 1919951111}
-  entername: {fileID: 0}
-  et_input: {fileID: 0}
-  et_confirm: {fileID: 0}
-  et_return: {fileID: 0}
-  enableLogoAnimation: 1
+  entername: {fileID: 1309655195}
+  et_input: {fileID: 1466637008}
+  et_confirm: {fileID: 1621378281}
+  et_return: {fileID: 1927856568}
+  enableLogoAnimation: 0
 --- !u!4 &2059455729
 Transform:
   m_ObjectHideFlags: 0
@@ -2793,6 +2837,7 @@ MonoBehaviour:
   sl2de: {fileID: 326638228}
   sl3ti: {fileID: 638445533}
   sl3de: {fileID: 2078704019}
+  clearGamePrefs: 1
 --- !u!1 &2078704019
 GameObject:
   m_ObjectHideFlags: 0
@@ -2995,7 +3040,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8849405526048582913}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2059455730}
+        m_MethodName: clickedSlot1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5728759263490333133
 MonoBehaviour:
   m_ObjectHideFlags: 0

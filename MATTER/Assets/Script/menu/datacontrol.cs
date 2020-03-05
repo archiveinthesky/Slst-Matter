@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class datacontrol : MonoBehaviour
 {
 
     public GameObject sl1ti, sl1de, sl2ti, sl2de, sl3ti, sl3de;  //SLot1Title, SLot1DEscription
     Text s1titxt, s1detxt, s2titxt, s2detxt, s3titxt, s3detxt;   //Slot1TItleTeXT
+    public bool clearGamePrefs;
+
+    void Awake()
+    {
+        if (clearGamePrefs)
+        {PlayerPrefs.DeleteAll();}
+    }
 
     public void setslotvals()
     {
@@ -28,4 +36,67 @@ public class datacontrol : MonoBehaviour
         if (PlayerPrefs.GetString("pps3ttln") == ""){s3detxt.text = "展開一場新的生存冒險!";}
         else{s3detxt.text = "第" + PlayerPrefs.GetInt("sl3d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl3h");}
     }
+
+    public void clickedSlot1()
+    {
+        if (PlayerPrefs.GetString("pps1ttln") == "")
+        {
+            GetComponent<menuController>().createNewSlot(1);
+        }
+        else{
+            startGame(1);
+        }
+    }
+
+    public void clickedSlot2()
+    {
+        if (PlayerPrefs.GetString("pps2ttln") == "")
+        {
+            GetComponent<menuController>().createNewSlot(2);
+        }else{
+            startGame(2);
+        }
+    }
+
+    public void clickedSlot3()
+    {
+        if (PlayerPrefs.GetString("pps3ttln") == "")
+        {
+            GetComponent<menuController>().createNewSlot(3);
+        }else{
+            startGame(3);
+        }
+    }
+
+    public void wipeSlot(int saveslot)
+    {
+        PlayerPrefs.DeleteKey("pps" + saveslot + "ttln");
+        PlayerPrefs.DeleteKey("sl" + saveslot + "d");
+        PlayerPrefs.DeleteKey("sl" + saveslot + "h");
+        PlayerPrefs.DeleteKey("sl" + saveslot + "f");
+        PlayerPrefs.DeleteKey("sl" + saveslot + "w");
+    }
+
+    public void createGame(int saveslot, string nameselected)
+    {
+        PlayerPrefs.SetString("pps" + saveslot + "ttln", nameselected);
+        PlayerPrefs.SetInt("sl" + saveslot + "d", 1);
+        PlayerPrefs.SetInt("sl" + saveslot + "h", 100);
+        PlayerPrefs.SetInt("sl" + saveslot + "f", 100);
+        PlayerPrefs.SetInt("sl" + saveslot + "w", 100);
+        startGame(saveslot);
+    }
+
+    public void startGame(int saveslot)
+    {
+        //PlayerPrefs.SetInt("currentGame", saveslot);
+        //SceneManager.LoadScene(sceneName:"maingame");
+        Debug.Log("StartGame info");
+        Debug.Log(PlayerPrefs.GetString("pps" + saveslot + "ttln"));
+        Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "d"));
+        Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "h"));
+        Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "f"));
+        Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "w"));
+    }
+
 }
