@@ -1,0 +1,57 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public static class Event_list
+{
+    public static string event1 ="奇怪的植物總是危險的，特別是外型奇特或顏色鮮豔的。不幸的是，今天在探索的時候，你就碰到了一株。在荒野生存，每一點植物都是不可少的，但是你應該冒險去摘它嗎? 是 : 你發現這是一株極具醫療效果的草藥,而且還能過濾水(血量+ 5 ; 水 + 1) 否 : 你認為山崖附近太危險,還是不要冒險去摘比較好";
+    public static string event2 ="你在某棵樹的樹幹上看見了許多奇形怪狀的昆蟲,它們聚集在一塊兒，像在討論甚麼似的，不過這當然是玩笑啦，畢竟昆蟲是無法開口說話的，但他們仍然是一種非常鮮美的食物，不過有沒有毒誰知道呢-是否將他們捉住? 是:你獲得了具有豐富蛋白質的口糧 (食物 + 1/3) 否:你認為可能有毒性,最後選擇不捉";
+    public static string event3 ="你在某個樹洞中發現了許多栗子，可能是可愛的小動物們囤積起來的，雖然說來有些慘忍，你是否要搶奪他們賴以維生的食物? 是 : 當你準備將手深入樹洞中時, 一隻松鼠跳出並將你的手抓傷 (HP - 10) 否 : 你認為這是屬於某些動物的,還是不要碰比較好";
+    public static string event4 ="探索途中，你在樹幹旁發現了一個奇怪的棕色背包，它相當的破舊，似乎是罹難的登山客所丟下的，是否要將背包打開查看? 是 : 當你拉開了背包拉鍊後，裡面發出了一股惡臭 (HP - 10)否 : 你認為應該尊重死者，於是把背包埋到土裡，過程中意外在草叢中發現了兩罐水(水 + 2)";
+    public static string event5 ="探索途中，你看見了一隻肥美豐腴的樹懶慵懶的趴在樹上打瞌睡，牠看起來美味極了，特別是你快餓暈的狀況下，是否將牠當場燉了?是 : 當你把手伸向樹懶時，牠的表情突然變的兇惡，並且折斷了身邊的樹枝砸向了你(HP - 99)否 : 樹懶用感動的眼神看著你，並將一個包裹朝你丟去，包裹上寫著＂總企劃為了感謝的你的不殺之恩，將大禮包贈送給你＂（食物 + ２ ； 水 + ２）";
+    public static string event6 ="探索途中，你看見樹上掛了一條像繩索的物品，若能取得，對於之後的探索活動相當有幫助，不過繩索的顏色過於斑斕，似乎有哪裡怪怪的，是否要將繩索拿下？是 : 當你拿下後發現是一條蛇, 牠將你的手臂咬傷（HP - 20)否 : 你認為可能是動物的尾巴,還是不要碰比較好";
+    public static string event7 ="小說中的尋寶情節是很難得的，你原本也不相信，不過你今天竟然在門外發現了一張畫有紅叉的地圖，是否要碰碰運氣，跟著地圖標示前進?是 : 你認為這是一張藏寶圖,果然到了目的地後發現了一個藏寶箱(食物+4)否 : 你認為紅色叉叉可能代表危險或是陷阱,於是沒有前往";
+    public static string event8 ="你的住處門口出現了一隻毛茸茸的白色貓咪，牠看起來非常可愛，有著水汪汪的眼睛，脖子上掛著一個寫著'R'的黃金吊牌，看起來是走失的，你是否要收養牠?是 : 當你準備將牠抱起時，牠用尖銳的爪子劃傷你的手臂後逃走了，回頭給了你一個鄙視的眼神(HP-20)否 : 那隻貓見你沒有要理牠，就傲嬌的衝進門，並將你的兩罐食物叼走後逃跑了，並回頭給了你一個鄙視的眼神(食物-2)";
+    public static string event9 ="你發現住處的門有一些破損，可能會影響安全，不論是喪屍或是水災都會是個大麻煩，你是否要把門修復?是 : 你用具有黏性的物質與水混和,將門修好了(水-1)否 : 幾天後來了場大雨,水淹進了門內(HP-10)";
+    public static string event10 ="收集並保存食物是很重要的，特別是在這個非常時期，此時你恰巧在樹下發現了許多叢聚的蕈類植物，是否要去摘取?是：當你準備觸碰時，有毒的粉末沾上了你的手(HP-5)否：你認為可能有毒，於是沒有去碰";
+    public static string event11 ="今日你的運氣不佳，當在你在樹林中進行探索時，遇見了一群漫無目遊走的喪屍，若被它們發現可不是件好事，是否躲進草叢?是：當你剛躲進去時，發現有一隻斷腿的殭屍隱藏在裡面，看見你後他迅速的撲了過來，你來不及反應被咬死了(血量-50)否：你狂奔的離開了那個區域，喪屍群被甩下了";
+    public static string event12 ="當你正在住處休息時，你突然聽見了一陣奇怪的敲門聲，聲音並不規律，有可能是小動物發出的聲音，是否要碰碰運氣打開門查看?是：當你將門拉開一小條縫隙時，就看見門外有一個陰暗的身影緊盯著你，當你驚恐地想把門關上時突然感到一陣暈眩而昏過去了，醒來後你發現某些物資不見了(食物-3)否：你認為有危險所以沒有去開門，不一會兒聲音不見了";
+    public static string event13 ="當你也在森林探險時，突然有一隻深綠且帶有詭異紋路的昆蟲，停駐在你的手臂上，並向你的脖頸攀爬，是否將牠拍死?是：蟲的汁液噴濺到你的臉上，瞬間讓你的臉產生許多膿皰，看起來噁心極了(HP-10)否：你忍住恐懼，沒有去碰觸那隻昆蟲，不久後牠飛走了";
+    public static string event14 ="";
+    public static string event15 ="";
+    public static string event16 ="";
+    public static string event17 ="";
+    public static string event18 ="";
+    public static string event19 ="";
+    public static string event20 ="";
+    public static string event21 ="";
+    public static string event22 ="";
+    public static string event23 ="";
+    public static string event24 ="";
+    public static string event25 ="";
+    public static string event26 ="";
+    public static string event27 ="";
+    public static string event28 ="";
+    public static string event29 ="";
+    public static string event30 ="";
+    public static string event31 ="";
+    public static string event32 ="";
+    public static string event33 ="";
+    public static string event34 ="";
+    public static string event35 ="";
+    public static string event36 ="";
+    public static string event37 ="";
+    public static string event38 ="";
+    public static string event39 ="";
+    public static string event40 ="";
+    public static string event41 ="";
+    public static string event42 ="";
+    public static string event43 ="";
+    public static string event44 ="";
+    public static string event45 ="";
+    public static string event46 ="";
+    public static string event47 ="";
+    public static string event48 ="";
+    public static string event49 ="";
+    public static string event50 ="";
+}

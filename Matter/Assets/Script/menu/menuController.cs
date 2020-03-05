@@ -8,6 +8,7 @@ public class menuController : MonoBehaviour
     public GameObject logointro;
     public GameObject canvas, background, logo, startGame, options;
     public GameObject slttl, backbtn, sl1, sl2, sl3;
+    public GameObject entername, et_input, et_confirm, et_return;
     private int instatus; // 1 = canvas, 2 = chose game, 3 = options menu
     public bool enableLogoAnimation;
     private bool firstrun, inOptions;
@@ -61,11 +62,11 @@ public class menuController : MonoBehaviour
     }
 
     public void optionsclicked()
-    {
+    {   
         if (!inOptions && instatus == 1) {StopCoroutine(passiveCanvasin()); canvasout();}
         else if (!inOptions && instatus == 2) {StopCoroutine(passiveCallSlot()); backSlot();}
         if (!inOptions) {options.GetComponent<optionsMenu>().entermenu(); inOptions = true;}
-        else {options.GetComponent<optionsMenu>().exitmenu(); inOptions = false;}
+
     }
 
     public void returnFromMenu()
@@ -87,6 +88,7 @@ public class menuController : MonoBehaviour
         yield return new WaitForSeconds(1);
         startGame.SetActive(true);
         startGame.GetComponent<Animator>().Play("startgame-intro-fade");
+        inOptions = false;
     }
 
     IEnumerator passiveCanvasout()
@@ -114,6 +116,7 @@ public class menuController : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         sl3.SetActive(true);
         sl3.GetComponent<Animator>().Play("s3-intro-fade");
+        inOptions = false;
     }
 
     IEnumerator passiveExitSlot()
