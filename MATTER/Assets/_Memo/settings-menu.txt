@@ -1,0 +1,2 @@
+enable Logo Animations = True
+clear user data = False

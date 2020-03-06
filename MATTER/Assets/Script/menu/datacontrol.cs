@@ -10,11 +10,14 @@ public class datacontrol : MonoBehaviour
     public GameObject sl1ti, sl1de, sl2ti, sl2de, sl3ti, sl3de;  //SLot1Title, SLot1DEscription
     Text s1titxt, s1detxt, s2titxt, s2detxt, s3titxt, s3detxt;   //Slot1TItleTeXT
     public bool clearGamePrefs;
+    private bool inDeleteMode;
 
     void Awake()
     {
         if (clearGamePrefs)
         {PlayerPrefs.DeleteAll();}
+        inDeleteMode = false;
+        createGame(1, "hi");
     }
 
     public void setslotvals()
@@ -37,34 +40,56 @@ public class datacontrol : MonoBehaviour
         else{s3detxt.text = "第" + PlayerPrefs.GetInt("sl3d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl3h");}
     }
 
+    public void swapToDeleteTitles()
+    {
+        s1titxt.text = "刪除存檔一";
+        s2titxt.text = "刪除存檔二";
+        s3titxt.text = "刪除存檔三";
+    }
+
     public void clickedSlot1()
     {
-        if (PlayerPrefs.GetString("pps1ttln") == "")
-        {
-            GetComponent<menuController>().createNewSlot(1);
-        }
-        else{
-            startGame(1);
+        if (inDeleteMode){
+            wipeSlot(1);
+            GetComponent<menuController>().trashbinClicked();
+        }else{
+            if (PlayerPrefs.GetString("pps1ttln") == "")
+            {
+                GetComponent<menuController>().createNewSlot(1);
+            }
+            else{
+                startGame(1);
+            }
         }
     }
 
     public void clickedSlot2()
     {
-        if (PlayerPrefs.GetString("pps2ttln") == "")
-        {
-            GetComponent<menuController>().createNewSlot(2);
+        if (inDeleteMode){
+            wipeSlot(2);
+            GetComponent<menuController>().trashbinClicked();
         }else{
-            startGame(2);
+            if (PlayerPrefs.GetString("pps2ttln") == "")
+            {
+                GetComponent<menuController>().createNewSlot(2);
+            }else{
+                startGame(2);
+            }
         }
     }
 
     public void clickedSlot3()
     {
-        if (PlayerPrefs.GetString("pps3ttln") == "")
-        {
-            GetComponent<menuController>().createNewSlot(3);
+        if (inDeleteMode){
+            wipeSlot(3);
+            GetComponent<menuController>().trashbinClicked();
         }else{
-            startGame(3);
+            if (PlayerPrefs.GetString("pps3ttln") == "")
+            {
+                GetComponent<menuController>().createNewSlot(3);
+            }else{
+                startGame(3);
+            }
         }
     }
 
@@ -90,13 +115,25 @@ public class datacontrol : MonoBehaviour
     public void startGame(int saveslot)
     {
         //PlayerPrefs.SetInt("currentGame", saveslot);
-        //SceneManager.LoadScene(sceneName:"maingame");
-        Debug.Log("StartGame info");
+        //SceneManager.LoadScene(sceneName:"maincave");
+        /*Debug.Log("StartGame info");
         Debug.Log(PlayerPrefs.GetString("pps" + saveslot + "ttln"));
         Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "d"));
         Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "h"));
         Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "f"));
-        Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "w"));
+        Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "w"));*/
+    }
+
+    public void trashBinOpen()
+    {
+        inDeleteMode = true;
+        swapToDeleteTitles();
+    }
+
+    public void trashBinClose()
+    {
+        inDeleteMode = false;
+        setslotvals();
     }
 
 }

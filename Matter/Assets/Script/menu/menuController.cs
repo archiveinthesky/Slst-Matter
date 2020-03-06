@@ -8,7 +8,7 @@ public class menuController : MonoBehaviour
     public GameObject logointro;
     public GameObject canvas, background, logo, startGame, options;
     public GameObject slttl, backbtn, sl1, sl2, sl3;
-    public GameObject trashbin_closed, trashbin_open;
+    public GameObject trashbutton, trashbin_closed, trashbin_open;
     public GameObject entername, et_input, et_confirm, et_return;
     private int instatus; // 1 = canvas, 2 = chose game, 3 = options menu
     private int selectedSlot;
@@ -71,15 +71,14 @@ public class menuController : MonoBehaviour
 
     public void optionsclicked()
     {   
-        if (!inOptions && instatus == 1) {StopCoroutine(passiveCanvasin()); canvasout();}
-        else if (!inOptions && instatus == 2) {StopCoroutine(passiveCallSlot()); backSlot();}
+        if (!inOptions && instatus == 1) {/*StopCoroutine(passiveCanvasin());*/ canvasout();}
+        else if (!inOptions && instatus == 2) {/*StopCoroutine(passiveCallSlot());*/ backSlot();}
         if (!inOptions) {options.GetComponent<optionsMenu>().entermenu(); inOptions = true;}
 
     }
 
     public void returnFromMenu()
     {
-        Debug.Log("mC returnFromMenu called");
         if (instatus == 1) {canvasin();}
         else if (instatus == 2) {choseSlot();}
     }
@@ -97,6 +96,7 @@ public class menuController : MonoBehaviour
     public void enableEnterGameBool()
     {
         creatingSlots = true;
+        instatus = 3;
     }
 
 
@@ -126,6 +126,24 @@ public class menuController : MonoBehaviour
         }
     }
 
+    public void trashbinClicked()
+    {
+        if (instatus == 2)
+        {
+            if (trashbinOpen){
+                trashbin_open.SetActive(true);
+                trashbin_closed.SetActive(false);
+                trashbinOpen = false;
+                GetComponent<datacontrol>().trashBinOpen();
+            }else{
+                trashbin_open.SetActive(false);
+                trashbin_closed.SetActive(true);
+                trashbinOpen = true;
+                GetComponent<datacontrol>().trashBinClose();
+            }
+        }
+    }
+
 
     // passive programs below -------------------------------------------------
 
@@ -135,25 +153,30 @@ public class menuController : MonoBehaviour
         logo.SetActive(false);
         startGame.SetActive(false);
         if (firstrun) {optionsbuttonshow(); yield return new WaitForSeconds(1); firstrun = false;}
+        options.GetComponent<optionsMenu>().nowInAnimation();
         logo.SetActive(true);
         logo.GetComponent<Animator>().Play("logo-intro");
         yield return new WaitForSeconds(1);
         startGame.SetActive(true);
         startGame.GetComponent<Animator>().Play("startgame-intro-fade");
         inOptions = false;
+        options.GetComponent<optionsMenu>().AnimationDone();
     }
 
     IEnumerator passiveCanvasout()
     {
+        options.GetComponent<optionsMenu>().nowInAnimation();
         logo.GetComponent<Animator>().Play("logo-outro");
         startGame.GetComponent<Animator>().Play("startgame-outro-fade");
         yield return new WaitForSeconds(1);
         logo.SetActive(false);
         startGame.SetActive(false);
+        options.GetComponent<optionsMenu>().AnimationDone();
     }
 
     IEnumerator passiveCallSlot()
     {
+        options.GetComponent<optionsMenu>().nowInAnimation();
         yield return new WaitForSeconds(1);
         slttl.SetActive(true);
         backbtn.SetActive(true);
@@ -169,11 +192,16 @@ public class menuController : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         sl3.SetActive(true);
         sl3.GetComponent<Animator>().Play("s3-intro-fade");
+        options.GetComponent<optionsMenu>().AnimationDone();
         inOptions = false;
     }
 
     IEnumerator passiveExitSlot()
     {
+        options.GetComponent<optionsMenu>().nowInAnimation();
+        GetComponent<datacontrol>().trashBinClose();
+        trashbin_closed.SetActive(true);
+        trashbin_open.SetActive(false);
         slttl.GetComponent<Animator>().Play("slttl-outro-fade");
         backbtn.GetComponent<Animator>().Play("slotBack-outro-fade");
         yield return new WaitForSeconds(0.2f);
@@ -183,11 +211,13 @@ public class menuController : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         sl3.GetComponent<Animator>().Play("s3-outro-fade");
         yield return new WaitForSeconds(1);
+        trashbin_closed.SetActive(false);
         slttl.SetActive(false);
         backbtn.SetActive(false);
         sl1.SetActive(false);
         sl2.SetActive(false);
         sl3.SetActive(false);
+        options.GetComponent<optionsMenu>().AnimationDone();
         if (!creatingSlots){
         canvasin();}
     }

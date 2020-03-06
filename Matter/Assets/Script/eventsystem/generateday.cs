@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class generateday : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static int days;
+    List<int> a;
     void Start()
     {
-        
-       string ya = events.event1;
-       Debug.Log(ya);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log(a);
     }
 }
