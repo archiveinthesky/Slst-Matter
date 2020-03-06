@@ -8,11 +8,12 @@ public class menuController : MonoBehaviour
     public GameObject logointro;
     public GameObject canvas, background, logo, startGame, options;
     public GameObject slttl, backbtn, sl1, sl2, sl3;
+    public GameObject trashbin_closed, trashbin_open;
     public GameObject entername, et_input, et_confirm, et_return;
     private int instatus; // 1 = canvas, 2 = chose game, 3 = options menu
     private int selectedSlot;
     public bool enableLogoAnimation;
-    private bool firstrun, inOptions, creatingSlots;
+    private bool firstrun, inOptions, creatingSlots, trashbinOpen;
     void Start()
     {
         canvas.SetActive(false);
@@ -20,10 +21,13 @@ public class menuController : MonoBehaviour
         sl1.SetActive(false);
         sl2.SetActive(false);
         sl3.SetActive(false);
+        trashbin_closed.SetActive(false);
+        trashbin_open.SetActive(false);
         backbtn.SetActive(false);
         creatingSlots = false;
         firstrun = true;
         inOptions = false;
+        trashbinOpen = false;
         selectedSlot = 0;
         if (enableLogoAnimation){ logointro.SetActive(true); playlogo();}
         else{canvasin();}
@@ -104,7 +108,7 @@ public class menuController : MonoBehaviour
 
     public void enterNameConfirm()
     {
-        if (creatingSlots)
+        if (creatingSlots && et_input.GetComponent<Text>().text != "")
         {
             GetComponent<datacontrol>().createGame(selectedSlot, et_input.GetComponent<Text>().text);
         }
@@ -153,6 +157,7 @@ public class menuController : MonoBehaviour
         yield return new WaitForSeconds(1);
         slttl.SetActive(true);
         backbtn.SetActive(true);
+        trashbin_closed.SetActive(true);
         slttl.GetComponent<Animator>().Play("slttl-intro-fade");
         backbtn.GetComponent<Animator>().Play("slotBack-intro-fade");
         yield return new WaitForSeconds(0.2f);
