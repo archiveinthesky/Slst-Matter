@@ -15,9 +15,9 @@ public class datacontrol : MonoBehaviour
     void Awake()
     {
         if (clearGamePrefs)
-        {PlayerPrefs.DeleteAll();}
+        { PlayerPrefs.DeleteAll(); }
         inDeleteMode = false;
-        createGame(1, "hi");
+        //createGame(1, "hi");
     }
 
     public void setslotvals()
@@ -32,12 +32,12 @@ public class datacontrol : MonoBehaviour
         s1titxt.text = "存檔一 " + PlayerPrefs.GetString("pps1ttln"); //playerprefsslot1titlename
         s2titxt.text = "存檔二 " + PlayerPrefs.GetString("pps2ttln");
         s3titxt.text = "存檔三 " + PlayerPrefs.GetString("pps3ttln");
-        if (PlayerPrefs.GetString("pps1ttln") == ""){s1detxt.text = "展開一場新的生存冒險!";}
-        else{s1detxt.text = "第" + PlayerPrefs.GetInt("sl1d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl1h");}
-        if (PlayerPrefs.GetString("pps2ttln") == ""){s2detxt.text = "展開一場新的生存冒險!";}
-        else{s2detxt.text = "第" + PlayerPrefs.GetInt("sl2d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl2h");}
-        if (PlayerPrefs.GetString("pps3ttln") == ""){s3detxt.text = "展開一場新的生存冒險!";}
-        else{s3detxt.text = "第" + PlayerPrefs.GetInt("sl3d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl3h");}
+        if (PlayerPrefs.GetString("pps1ttln") == "") { s1detxt.text = "展開一場新的生存冒險!"; }
+        else { s1detxt.text = "第" + PlayerPrefs.GetInt("sl1d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl1h"); }
+        if (PlayerPrefs.GetString("pps2ttln") == "") { s2detxt.text = "展開一場新的生存冒險!"; }
+        else { s2detxt.text = "第" + PlayerPrefs.GetInt("sl2d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl2h"); }
+        if (PlayerPrefs.GetString("pps3ttln") == "") { s3detxt.text = "展開一場新的生存冒險!"; }
+        else { s3detxt.text = "第" + PlayerPrefs.GetInt("sl3d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl3h"); }
     }
 
     public void swapToDeleteTitles()
@@ -49,15 +49,19 @@ public class datacontrol : MonoBehaviour
 
     public void clickedSlot1()
     {
-        if (inDeleteMode){
+        if (inDeleteMode)
+        {
             wipeSlot(1);
             GetComponent<menuController>().trashbinClicked();
-        }else{
+        }
+        else
+        {
             if (PlayerPrefs.GetString("pps1ttln") == "")
             {
                 GetComponent<menuController>().createNewSlot(1);
             }
-            else{
+            else
+            {
                 startGame(1);
             }
         }
@@ -65,14 +69,19 @@ public class datacontrol : MonoBehaviour
 
     public void clickedSlot2()
     {
-        if (inDeleteMode){
+        if (inDeleteMode)
+        {
             wipeSlot(2);
             GetComponent<menuController>().trashbinClicked();
-        }else{
+        }
+        else
+        {
             if (PlayerPrefs.GetString("pps2ttln") == "")
             {
                 GetComponent<menuController>().createNewSlot(2);
-            }else{
+            }
+            else
+            {
                 startGame(2);
             }
         }
@@ -80,14 +89,19 @@ public class datacontrol : MonoBehaviour
 
     public void clickedSlot3()
     {
-        if (inDeleteMode){
+        if (inDeleteMode)
+        {
             wipeSlot(3);
             GetComponent<menuController>().trashbinClicked();
-        }else{
+        }
+        else
+        {
             if (PlayerPrefs.GetString("pps3ttln") == "")
             {
                 GetComponent<menuController>().createNewSlot(3);
-            }else{
+            }
+            else
+            {
                 startGame(3);
             }
         }
@@ -114,8 +128,9 @@ public class datacontrol : MonoBehaviour
 
     public void startGame(int saveslot)
     {
-        //PlayerPrefs.SetInt("currentGame", saveslot);
-        //SceneManager.LoadScene(sceneName:"maincave");
+        Debug.Log("called");
+        PlayerPrefs.SetInt("currentGame", saveslot);
+        SceneManager.LoadScene(sceneName: "maincave");
         /*Debug.Log("StartGame info");
         Debug.Log(PlayerPrefs.GetString("pps" + saveslot + "ttln"));
         Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "d"));

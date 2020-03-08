@@ -3124,7 +3124,7 @@ MonoBehaviour:
   et_input: {fileID: 1466637008}
   et_confirm: {fileID: 1621378281}
   et_return: {fileID: 1927856568}
-  enableLogoAnimation: 0
+  enableLogoAnimation: 1
 --- !u!4 &2059455729
 Transform:
   m_ObjectHideFlags: 0

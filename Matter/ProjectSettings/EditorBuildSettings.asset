@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/menu.unity
     guid: 0d93d0aaaf65f294fa43ff6a6a66e8cd
+  - enabled: 1
+    path: Assets/Scenes/maincave.unity
+    guid: 530f9896447e66e47ba05e0b5baed8da
   m_configObjects: {}
