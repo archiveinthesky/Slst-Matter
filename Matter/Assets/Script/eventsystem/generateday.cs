@@ -5,9 +5,10 @@ using UnityEngine;
 public class generateday : MonoBehaviour
 {
     public static int days;
-    List<int> a;
+    List<string> a;
     void Start()
     {
-        Debug.Log(a);
+        a = event_list.events;
+
     }
 }
