@@ -5,6 +5,7 @@ using UnityEngine;
 public class recievedata : MonoBehaviour
 {
     // Start is called before the first frame update
+
     void Start()
     {
 
@@ -16,7 +17,7 @@ public class recievedata : MonoBehaviour
 
     }
 
-    void applyEffect(string changes)
+    public void applyEffect(string changes)
     {
         char p = '\u0070';
         char a = '\u0061';
@@ -41,7 +42,7 @@ public class recievedata : MonoBehaviour
                         editval *= 10;
                         editval += int.Parse(changes[i].ToString());
                     }
-                    //hp + value
+                    GetComponent<lifeData>().setVal("p", GetComponent<lifeData>().getVal("p") + editval);
                     i++;
                 }
                 if (changes[i] == min)
@@ -53,7 +54,7 @@ public class recievedata : MonoBehaviour
                         editval *= 10;
                         editval += int.Parse(changes[i].ToString());
                     }
-                    //hp - value
+                    GetComponent<lifeData>().setVal("p", GetComponent<lifeData>().getVal("p") - editval);
                     i++;
                 }
             }
@@ -69,7 +70,7 @@ public class recievedata : MonoBehaviour
                         editval *= 10;
                         editval += int.Parse(changes[i].ToString());
                     }
-                    //waterStorage + value
+                    GetComponent<lifeData>().setVal("a", GetComponent<lifeData>().getVal("a") + editval);
                     i++;
                 }
                 if (changes[i] == min)
@@ -81,7 +82,7 @@ public class recievedata : MonoBehaviour
                         editval *= 10;
                         editval += int.Parse(changes[i].ToString());
                     }
-                    //waterStorage - value
+                    GetComponent<lifeData>().setVal("a", GetComponent<lifeData>().getVal("a") - editval);
                     i++;
                 }
             }
@@ -96,8 +97,9 @@ public class recievedata : MonoBehaviour
                     {
                         editval *= 10;
                         editval += int.Parse(changes[i].ToString());
+                        i++;
                     }
-                    //foodStorage + value
+                    GetComponent<lifeData>().setVal("o", GetComponent<lifeData>().getVal("o") + editval);
                     i++;
                 }
                 if (changes[i] == min)
@@ -109,7 +111,7 @@ public class recievedata : MonoBehaviour
                         editval *= 10;
                         editval += int.Parse(changes[i].ToString());
                     }
-                    //foodStorage - value
+                    GetComponent<lifeData>().setVal("o", GetComponent<lifeData>().getVal("o") - editval);
                     i++;
                 }
             }
@@ -125,7 +127,7 @@ public class recievedata : MonoBehaviour
                         editval *= 10;
                         editval += int.Parse(changes[i].ToString());
                     }
-                    //hunger + value
+                    GetComponent<lifeData>().setVal("u", GetComponent<lifeData>().getVal("u") + editval);
                     i++;
                 }
                 if (changes[i] == min)
@@ -137,7 +139,7 @@ public class recievedata : MonoBehaviour
                         editval *= 10;
                         editval += int.Parse(changes[i].ToString());
                     }
-                    //hunger - value
+                    GetComponent<lifeData>().setVal("u", GetComponent<lifeData>().getVal("u") + editval);
                     i++;
                 }
             }
@@ -153,7 +155,7 @@ public class recievedata : MonoBehaviour
                         editval *= 10;
                         editval += int.Parse(changes[i].ToString());
                     }
-                    //thirst + value
+                    GetComponent<lifeData>().setVal("h", GetComponent<lifeData>().getVal("h") + editval);
                     i++;
                 }
                 if (changes[i] == min)
@@ -165,7 +167,7 @@ public class recievedata : MonoBehaviour
                         editval *= 10;
                         editval += int.Parse(changes[i].ToString());
                     }
-                    //thurst - value
+                    GetComponent<lifeData>().setVal("h", GetComponent<lifeData>().getVal("h") + editval);
                     i++;
                 }
             }

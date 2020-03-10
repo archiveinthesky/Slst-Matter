@@ -8,48 +8,80 @@ public class lifeData : MonoBehaviour
 
     private int days, health, waterStorage, foodStorage, hunger, thirst;
 
+    void Start()
+    {
+        init(PlayerPrefs.GetInt("currentGame"));
+        Debug.Log(getVal("o"));
+        GetComponent<recievedata>().applyEffect("o+2");
+        Debug.Log(getVal("o"));
+    }
+
     public void init(int loadSlot)
     {
         days = PlayerPrefs.GetInt("sl" + loadSlot + "d");
         health = PlayerPrefs.GetInt("sl" + loadSlot + "p");
         waterStorage = PlayerPrefs.GetInt("sl" + loadSlot + "a");
-        foodStorage = PlayerPrefs.GetInt("sl" + loadSlot + "u");
-        hunger = PlayerPrefs.GetInt("sl" + loadSlot + "o");
+        foodStorage = PlayerPrefs.GetInt("sl" + loadSlot + "o");
+        hunger = PlayerPrefs.GetInt("sl" + loadSlot + "u");
         thirst = PlayerPrefs.GetInt("sl" + loadSlot + "h");
     }
 
     public int getVal(string valueName)
     {
-        if (valueName == "d"){
+        if (valueName == "d")
+        {
             return days;
-        }else if (valueName == "p"){
+        }
+        else if (valueName == "p")
+        {
             return health;
-        }else if (valueName == "a"){
+        }
+        else if (valueName == "a")
+        {
             return waterStorage;
-        }else if (valueName == "o"){
+        }
+        else if (valueName == "o")
+        {
             return foodStorage;
-        }else if (valueName == "u"){
+        }
+        else if (valueName == "u")
+        {
             return hunger;
-        }else if (valueName == "h"){
+        }
+        else if (valueName == "h")
+        {
             return thirst;
-        }else{
+        }
+        else
+        {
             return 0;
         }
     }
 
     public void setVal(string valueName, int value)
     {
-        if (valueName == "d"){
+        if (valueName == "d")
+        {
             days = value;
-        }else if (valueName == "p"){
+        }
+        else if (valueName == "p")
+        {
             health = value;
-        }else if (valueName == "a"){
+        }
+        else if (valueName == "a")
+        {
             waterStorage = value;
-        }else if (valueName == "o"){
+        }
+        else if (valueName == "o")
+        {
             foodStorage = value;
-        }else if (valueName == "u"){
-            hunger = value; 
-        }else if (valueName == "h"){
+        }
+        else if (valueName == "u")
+        {
+            hunger = value;
+        }
+        else if (valueName == "h")
+        {
             thirst = value;
         }
     }

@@ -132,7 +132,6 @@ public class datacontrol : MonoBehaviour
 
     public void startGame(int saveslot)
     {
-        Debug.Log("called");
         PlayerPrefs.SetInt("currentGame", saveslot);
         SceneManager.LoadScene(sceneName: "maincave");
         /*Debug.Log("StartGame info");
