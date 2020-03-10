@@ -111,18 +111,22 @@ public class datacontrol : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("pps" + saveslot + "ttln");
         PlayerPrefs.DeleteKey("sl" + saveslot + "d");
+        PlayerPrefs.DeleteKey("sl" + saveslot + "p");
+        PlayerPrefs.DeleteKey("sl" + saveslot + "a");
+        PlayerPrefs.DeleteKey("sl" + saveslot + "o");
+        PlayerPrefs.DeleteKey("sl" + saveslot + "u");
         PlayerPrefs.DeleteKey("sl" + saveslot + "h");
-        PlayerPrefs.DeleteKey("sl" + saveslot + "f");
-        PlayerPrefs.DeleteKey("sl" + saveslot + "w");
     }
 
     public void createGame(int saveslot, string nameselected)
     {
         PlayerPrefs.SetString("pps" + saveslot + "ttln", nameselected);
         PlayerPrefs.SetInt("sl" + saveslot + "d", 1);
+        PlayerPrefs.SetInt("sl" + saveslot + "p", 100);
+        PlayerPrefs.SetInt("sl" + saveslot + "a", 5);
+        PlayerPrefs.SetInt("sl" + saveslot + "o", 5);
+        PlayerPrefs.SetInt("sl" + saveslot + "u", 100);
         PlayerPrefs.SetInt("sl" + saveslot + "h", 100);
-        PlayerPrefs.SetInt("sl" + saveslot + "f", 100);
-        PlayerPrefs.SetInt("sl" + saveslot + "w", 100);
         startGame(saveslot);
     }
 
