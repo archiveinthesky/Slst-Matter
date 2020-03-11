@@ -19,158 +19,25 @@ public class recievedata : MonoBehaviour
 
     public void applyEffect(string changes)
     {
-        char p = '\u0070';
-        char a = '\u0061';
-        char o = '\u006f';
-        char u = '\u0075';
-        char h = '\u0068';
-        char sep = '\u002c';
-        char add = '\u002b';
-        char min = '\u002d';
-
         for (int i = 0; i < changes.Length; i++)
         {
-            if (changes[i] == p)
-            {
-                i++;
-                if (changes[i] == add)
-                {
-                    i++;
-                    int editval = 0;
-                    while (changes[i] != sep)
-                    {
-                        editval *= 10;
-                        editval += int.Parse(changes[i].ToString());
-                    }
-                    GetComponent<lifeData>().setVal("p", GetComponent<lifeData>().getVal("p") + editval);
-                    i++;
-                }
-                if (changes[i] == min)
-                {
-                    i++;
-                    int editval = 0;
-                    while (changes[i] != sep)
-                    {
-                        editval *= 10;
-                        editval += int.Parse(changes[i].ToString());
-                    }
-                    GetComponent<lifeData>().setVal("p", GetComponent<lifeData>().getVal("p") - editval);
-                    i++;
-                }
+            string edititem = changes[i].ToString();
+            i++;
+            int times;
+            if (changes[i].ToString() == "+"){
+                times = 1;
+            }else{
+                times = -1;
             }
-            else if (changes[i] == a)
-            {
+            i++;
+            int editval = 0;
+            while (changes[i].ToString() != ","){
+                editval *= 10;
+                editval += int.Parse(changes[i].ToString());
                 i++;
-                if (changes[i] == add)
-                {
-                    i++;
-                    int editval = 0;
-                    while (changes[i] != sep)
-                    {
-                        editval *= 10;
-                        editval += int.Parse(changes[i].ToString());
-                    }
-                    GetComponent<lifeData>().setVal("a", GetComponent<lifeData>().getVal("a") + editval);
-                    i++;
-                }
-                if (changes[i] == min)
-                {
-                    i++;
-                    int editval = 0;
-                    while (changes[i] != sep)
-                    {
-                        editval *= 10;
-                        editval += int.Parse(changes[i].ToString());
-                    }
-                    GetComponent<lifeData>().setVal("a", GetComponent<lifeData>().getVal("a") - editval);
-                    i++;
-                }
             }
-            else if (changes[i] == o)
-            {
-                i++;
-                if (changes[i] == add)
-                {
-                    i++;
-                    int editval = 0;
-                    while (changes[i] != sep)
-                    {
-                        editval *= 10;
-                        editval += int.Parse(changes[i].ToString());
-                        i++;
-                    }
-                    GetComponent<lifeData>().setVal("o", GetComponent<lifeData>().getVal("o") + editval);
-                    i++;
-                }
-                if (changes[i] == min)
-                {
-                    i++;
-                    int editval = 0;
-                    while (changes[i] != sep)
-                    {
-                        editval *= 10;
-                        editval += int.Parse(changes[i].ToString());
-                    }
-                    GetComponent<lifeData>().setVal("o", GetComponent<lifeData>().getVal("o") - editval);
-                    i++;
-                }
-            }
-            else if (changes[i] == u)
-            {
-                i++;
-                if (changes[i] == add)
-                {
-                    i++;
-                    int editval = 0;
-                    while (changes[i] != sep)
-                    {
-                        editval *= 10;
-                        editval += int.Parse(changes[i].ToString());
-                    }
-                    GetComponent<lifeData>().setVal("u", GetComponent<lifeData>().getVal("u") + editval);
-                    i++;
-                }
-                if (changes[i] == min)
-                {
-                    i++;
-                    int editval = 0;
-                    while (changes[i] != sep)
-                    {
-                        editval *= 10;
-                        editval += int.Parse(changes[i].ToString());
-                    }
-                    GetComponent<lifeData>().setVal("u", GetComponent<lifeData>().getVal("u") + editval);
-                    i++;
-                }
-            }
-            else if (changes[i] == h)
-            {
-                i++;
-                if (changes[i] == add)
-                {
-                    i++;
-                    int editval = 0;
-                    while (changes[i] != sep)
-                    {
-                        editval *= 10;
-                        editval += int.Parse(changes[i].ToString());
-                    }
-                    GetComponent<lifeData>().setVal("h", GetComponent<lifeData>().getVal("h") + editval);
-                    i++;
-                }
-                if (changes[i] == min)
-                {
-                    i++;
-                    int editval = 0;
-                    while (changes[i] != sep)
-                    {
-                        editval *= 10;
-                        editval += int.Parse(changes[i].ToString());
-                    }
-                    GetComponent<lifeData>().setVal("h", GetComponent<lifeData>().getVal("h") + editval);
-                    i++;
-                }
-            }
+            GetComponent<lifeData>().setVal(edititem, GetComponent<lifeData>().getVal(edititem) + editval * times);
         }
     }
+
 }

@@ -12,8 +12,10 @@ public class lifeData : MonoBehaviour
     {
         init(PlayerPrefs.GetInt("currentGame"));
         Debug.Log(getVal("o"));
-        GetComponent<recievedata>().applyEffect("o+2");
+        Debug.Log(getVal("a"));
+        GetComponent<recievedata>().applyEffect("o+2,a+2,");
         Debug.Log(getVal("o"));
+        Debug.Log(getVal("a"));
     }
 
     public void init(int loadSlot)
