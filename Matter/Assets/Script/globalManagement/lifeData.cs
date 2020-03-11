@@ -5,21 +5,17 @@ using UnityEngine;
 public class lifeData : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    private int inSlot;
     private int days, health, waterStorage, foodStorage, hunger, thirst;
 
     void Start()
     {
         init(PlayerPrefs.GetInt("currentGame"));
-        Debug.Log(getVal("o"));
-        Debug.Log(getVal("a"));
-        GetComponent<recievedata>().applyEffect("o+2,a+2,");
-        Debug.Log(getVal("o"));
-        Debug.Log(getVal("a"));
     }
 
     public void init(int loadSlot)
     {
+        inSlot = loadSlot;
         days = PlayerPrefs.GetInt("sl" + loadSlot + "d");
         health = PlayerPrefs.GetInt("sl" + loadSlot + "p");
         waterStorage = PlayerPrefs.GetInt("sl" + loadSlot + "a");
@@ -86,5 +82,15 @@ public class lifeData : MonoBehaviour
         {
             thirst = value;
         }
+    }
+
+    public void newDay()
+    {
+        PlayerPrefs.SetInt("sl" + inSlot + "d", days);
+        PlayerPrefs.SetInt("sl" + inSlot + "p", health);
+        PlayerPrefs.SetInt("sl" + inSlot + "a", waterStorage);
+        PlayerPrefs.SetInt("sl" + inSlot + "o", foodStorage);
+        PlayerPrefs.SetInt("sl" + inSlot + "u", hunger);
+        PlayerPrefs.SetInt("sl" + inSlot + "h", thirst);
     }
 }
