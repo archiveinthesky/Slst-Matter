@@ -29,8 +29,8 @@ public class menuController : MonoBehaviour
         inOptions = false;
         trashbinOpen = false;
         selectedSlot = 0;
-        if (enableLogoAnimation){ logointro.SetActive(true); playlogo();}
-        else{canvasin();}
+        if (enableLogoAnimation) { logointro.SetActive(true); playlogo(); }
+        else { canvasin(); }
     }
 
     void playlogo()
@@ -52,8 +52,10 @@ public class menuController : MonoBehaviour
     public void choseSlot()
     {
         instatus = 2;
-        if (!creatingSlots){
-        StartCoroutine(passiveCanvasout());}
+        if (!creatingSlots)
+        {
+            StartCoroutine(passiveCanvasout());
+        }
         GetComponent<datacontrol>().setslotvals();
         StartCoroutine(passiveCallSlot());
     }
@@ -70,17 +72,17 @@ public class menuController : MonoBehaviour
     }
 
     public void optionsclicked()
-    {   
-        if (!inOptions && instatus == 1) {/*StopCoroutine(passiveCanvasin());*/ canvasout();}
-        else if (!inOptions && instatus == 2) {/*StopCoroutine(passiveCallSlot());*/ backSlot();}
-        if (!inOptions) {options.GetComponent<optionsMenu>().entermenu(); inOptions = true;}
+    {
+        if (!inOptions && instatus == 1) {/*StopCoroutine(passiveCanvasin());*/ canvasout(); }
+        else if (!inOptions && instatus == 2) {/*StopCoroutine(passiveCallSlot());*/ backSlot(); }
+        if (!inOptions) { options.GetComponent<optionsMenu>().entermenu(); inOptions = true; }
 
     }
 
     public void returnFromMenu()
     {
-        if (instatus == 1) {canvasin();}
-        else if (instatus == 2) {choseSlot();}
+        if (instatus == 1) { canvasin(); }
+        else if (instatus == 2) { choseSlot(); }
     }
 
     public void createNewSlot(int slotval)
@@ -130,12 +132,15 @@ public class menuController : MonoBehaviour
     {
         if (instatus == 2)
         {
-            if (trashbinOpen){
+            if (trashbinOpen)
+            {
                 trashbin_open.SetActive(true);
                 trashbin_closed.SetActive(false);
                 trashbinOpen = false;
                 GetComponent<datacontrol>().trashBinOpen();
-            }else{
+            }
+            else
+            {
                 trashbin_open.SetActive(false);
                 trashbin_closed.SetActive(true);
                 trashbinOpen = true;
@@ -148,11 +153,11 @@ public class menuController : MonoBehaviour
     // passive programs below -------------------------------------------------
 
     IEnumerator passiveCanvasin()
-    {   
+    {
         canvas.SetActive(true);
         logo.SetActive(false);
         startGame.SetActive(false);
-        if (firstrun) {optionsbuttonshow(); yield return new WaitForSeconds(1); firstrun = false;}
+        if (firstrun) { optionsbuttonshow(); yield return new WaitForSeconds(1); firstrun = false; }
         options.GetComponent<optionsMenu>().nowInAnimation();
         logo.SetActive(true);
         logo.GetComponent<Animator>().Play("logo-intro");
@@ -218,8 +223,10 @@ public class menuController : MonoBehaviour
         sl2.SetActive(false);
         sl3.SetActive(false);
         options.GetComponent<optionsMenu>().AnimationDone();
-        if (!creatingSlots){
-        canvasin();}
+        if (!creatingSlots)
+        {
+            canvasin();
+        }
     }
 
 }

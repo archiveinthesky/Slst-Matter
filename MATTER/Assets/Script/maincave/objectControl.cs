@@ -9,6 +9,7 @@ public class objectControl : MonoBehaviour
     private float nowPos, originalPos, camOPos;
     private bool wasTouched;
     Touch touch;
+    public Texture2D[] tex2darray;
     void Start()
     {
         limitLeft = 0;
@@ -18,13 +19,24 @@ public class objectControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Input.touchCount);
+        //Debug.Log(Input.touchCount);
         if (Input.touchCount > 0)
         {
+            touch = Input.GetTouch(0);
             if (wasTouched)
             {
+                Debug.Log("was touched");
                 nowPos = touch.position.x;
-                mainCamera.GetComponent<Transform>().position = ();
+                Debug.Log(mainCamera.GetComponent<Transform>().position.x);
+                mainCamera.GetComponent<Transform>().position = new Vector3(camOPos - nowPos + originalPos, 0, 0);
+                if (mainCamera.GetComponent<Transform>().position.x < 0)
+                {
+                    mainCamera.GetComponent<Transform>().position = new Vector3(0, 0, 0);
+                }
+                else if (mainCamera.GetComponent<Transform>().position.x > 2100)
+                {
+                    mainCamera.GetComponent<Transform>().position = new Vector3(2100, 0, 0);
+                }
             }
             else
             {
@@ -32,16 +44,17 @@ public class objectControl : MonoBehaviour
                 originalPos = touch.position.x;
                 camOPos = mainCamera.GetComponent<Transform>().position.x;
             }
-            touch = Input.GetTouch(0);
-            Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-            touchPos.z = 0;
-            touchPos.y = 0;
-            mainCamera.GetComponent<Transform>().position = touchPos;
-            Debug.Log(touchPos);
+
         }
         else
         {
             wasTouched = false;
         }
+    }
+
+
+    void blash()
+    {
+
     }
 }
