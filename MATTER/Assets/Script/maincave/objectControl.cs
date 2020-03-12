@@ -20,14 +20,12 @@ public class objectControl : MonoBehaviour
     void Update()
     {
         //Debug.Log(Input.touchCount);
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && !GetComponent<objDescribe>().inPanel)
         {
             touch = Input.GetTouch(0);
             if (wasTouched)
             {
-                Debug.Log("was touched");
                 nowPos = touch.position.x;
-                Debug.Log(mainCamera.GetComponent<Transform>().position.x);
                 mainCamera.GetComponent<Transform>().position = new Vector3(camOPos - nowPos + originalPos, 0, 0);
                 if (mainCamera.GetComponent<Transform>().position.x < 0)
                 {
@@ -53,8 +51,4 @@ public class objectControl : MonoBehaviour
     }
 
 
-    void blash()
-    {
-
-    }
 }

@@ -9,6 +9,7 @@ public class datacontrol : MonoBehaviour
 
     public GameObject sl1ti, sl1de, sl2ti, sl2de, sl3ti, sl3de;  //SLot1Title, SLot1DEscription
     Text s1titxt, s1detxt, s2titxt, s2detxt, s3titxt, s3detxt;   //Slot1TItleTeXT
+    public GameObject fadeingCloth;
     public bool clearGamePrefs;
     private bool inDeleteMode;
 
@@ -133,13 +134,8 @@ public class datacontrol : MonoBehaviour
     public void startGame(int saveslot)
     {
         PlayerPrefs.SetInt("currentGame", saveslot);
-        SceneManager.LoadScene(sceneName: "maincave");
-        /*Debug.Log("StartGame info");
-        Debug.Log(PlayerPrefs.GetString("pps" + saveslot + "ttln"));
-        Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "d"));
-        Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "h"));
-        Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "f"));
-        Debug.Log(PlayerPrefs.GetInt("sl" + saveslot + "w"));*/
+        fadeingCloth.SetActive(true);
+        fadeingCloth.GetComponent<Animator>().Play("finalFadeOut");
     }
 
     public void trashBinOpen()
