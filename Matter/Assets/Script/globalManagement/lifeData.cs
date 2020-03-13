@@ -5,7 +5,7 @@ using UnityEngine;
 public class lifeData : MonoBehaviour
 {
     // Start is called before the first frame update
-    private int inSlot;
+    public int inSlot;
     private int days, health, waterStorage, foodStorage, hunger, thirst;
 
     void Start()

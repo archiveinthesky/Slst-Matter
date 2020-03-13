@@ -9,7 +9,7 @@ public class recievedata : MonoBehaviour
     public void newDay()
     {
         //dajun code of get event
-        applyEffect(yesterdaysChange);
+        //applyEffect(yesterdaysChange);
     }
 
     public string getTodayEvent()
@@ -29,14 +29,18 @@ public class recievedata : MonoBehaviour
             string edititem = changes[i].ToString();
             i++;
             int times;
-            if (changes[i].ToString() == "+"){
+            if (changes[i].ToString() == "+")
+            {
                 times = 1;
-            }else{
+            }
+            else
+            {
                 times = -1;
             }
             i++;
             int editval = 0;
-            while (changes[i].ToString() != ","){
+            while (changes[i].ToString() != ",")
+            {
                 editval *= 10;
                 editval += int.Parse(changes[i].ToString());
                 i++;

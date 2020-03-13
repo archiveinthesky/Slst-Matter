@@ -9,7 +9,6 @@ public class objectControl : MonoBehaviour
     private float nowPos, originalPos, oriMousePos, camOPos;
     private bool wasTouched;
     Touch touch;
-    public Texture2D[] tex2darray;
     void Start()
     {
         limitLeft = 0;
@@ -60,7 +59,7 @@ public class objectControl : MonoBehaviour
         {
             mainCamera.GetComponent<Transform>().position = new Vector3(mainCamera.GetComponent<Transform>().position.x + 10, mainCamera.GetComponent<Transform>().position.y, mainCamera.GetComponent<Transform>().position.z);
         }
-        
+
         if (mainCamera.GetComponent<Transform>().position.x < 0)
         {
             mainCamera.GetComponent<Transform>().position = new Vector3(0, 0, 0);
