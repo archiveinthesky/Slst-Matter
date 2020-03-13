@@ -6,7 +6,7 @@ public class objectControl : MonoBehaviour
 {
     public GameObject mainCamera;
     private int limitLeft, limitRight;
-    private float nowPos, originalPos, camOPos;
+    private float nowPos, originalPos, oriMousePos, camOPos;
     private bool wasTouched;
     Touch touch;
     public Texture2D[] tex2darray;
@@ -20,6 +20,7 @@ public class objectControl : MonoBehaviour
     void Update()
     {
         //Debug.Log(Input.touchCount);
+
         if (Input.touchCount > 0 && !GetComponent<objDescribe>().inPanel)
         {
             touch = Input.GetTouch(0);
@@ -40,13 +41,33 @@ public class objectControl : MonoBehaviour
             {
                 wasTouched = true;
                 originalPos = touch.position.x;
+                oriMousePos = Input.mousePosition.x;
                 camOPos = mainCamera.GetComponent<Transform>().position.x;
             }
+
 
         }
         else
         {
             wasTouched = false;
+        }
+
+        if (Input.GetKey("a"))
+        {
+            mainCamera.GetComponent<Transform>().position = new Vector3(mainCamera.GetComponent<Transform>().position.x - 10, mainCamera.GetComponent<Transform>().position.y, mainCamera.GetComponent<Transform>().position.z);
+        }
+        else if (Input.GetKey("d"))
+        {
+            mainCamera.GetComponent<Transform>().position = new Vector3(mainCamera.GetComponent<Transform>().position.x + 10, mainCamera.GetComponent<Transform>().position.y, mainCamera.GetComponent<Transform>().position.z);
+        }
+        
+        if (mainCamera.GetComponent<Transform>().position.x < 0)
+        {
+            mainCamera.GetComponent<Transform>().position = new Vector3(0, 0, 0);
+        }
+        else if (mainCamera.GetComponent<Transform>().position.x > 2100)
+        {
+            mainCamera.GetComponent<Transform>().position = new Vector3(2100, 0, 0);
         }
     }
 

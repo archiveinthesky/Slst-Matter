@@ -84,7 +84,7 @@ public class lifeData : MonoBehaviour
         }
     }
 
-    public void newDay()
+    public void saveData()
     {
         PlayerPrefs.SetInt("sl" + inSlot + "d", days);
         PlayerPrefs.SetInt("sl" + inSlot + "p", health);

@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class recievedata : MonoBehaviour
 {
-    // Start is called before the first frame update
+    string todayEvent, yesterdaysEvent, yesterdaysChange;
 
-    void Start()
+    public void newDay()
     {
-
+        //dajun code of get event
+        applyEffect(yesterdaysChange);
     }
 
-    // Update is called once per frame
-    void Update()
+    public string getTodayEvent()
     {
-
+        return todayEvent;
     }
 
-    public void applyEffect(string changes)
+    public string getYestChange()
+    {
+        return yesterdaysEvent;
+    }
+
+    void applyEffect(string changes)
     {
         for (int i = 0; i < changes.Length; i++)
         {
