@@ -13,6 +13,11 @@ public class PlayerInfoManager : MonoBehaviour
     public GameObject IGDT, IGPT, IGHT, IGWT; // panel player info "InGame_Tet"
     public GameObject IGDS, IGPS, IGHS, IGWS;
 
+    public void enableUIInfo()
+    {
+        UIInfo.SetActive(true);
+        enterPlayerInfo();
+    }
 
     public void enterPlayerInfo()
     {
@@ -30,10 +35,17 @@ public class PlayerInfoManager : MonoBehaviour
         playerInfoMother.SetActive(true);
     }
 
+    public void enterHasObjects()
+    {
+        //create show text
+        string showVals = "";
+
+    }
+
 
     void Start()
     {
-        enterPlayerInfo();
+        enableUIInfo();
     }
 
     // Update is called once per frame
