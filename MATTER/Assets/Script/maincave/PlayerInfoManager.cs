@@ -15,6 +15,12 @@ public class PlayerInfoManager : MonoBehaviour
     public GameObject IGDS, IGPS, IGHS, IGWS;
     public GameObject HOLPT, HORPT;
     public GameObject TETXT;
+    public GameObject ERTXT, ERRES;
+
+    void Start()
+    {
+        UIInfo.SetActive(false);
+    }
 
     void Update()
     {
@@ -105,6 +111,52 @@ public class PlayerInfoManager : MonoBehaviour
         playerHasObjects.SetActive(false);
         playerTodayEvent.SetActive(true);
         playerEventHistory.SetActive(false);
+    }
+
+    public void enterEventResult()
+    {
+        modePlayerInfoBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
+        modeHasObjectsBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
+        modeTodayEventBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
+        modeEventHistoryBtn.GetComponent<Text>().color = new Vector4(0, 255, 200, 255);
+
+        ERTXT.GetComponent<Text>().text = "result text";
+        string compileres = "";
+        string fromres = "o+2,";
+        Debug.Log(fromres.Length);
+        for (int i = 0; i < fromres.Length; i++)
+        {
+            if (fromres[i].ToString() == "p"){
+                compileres += "生命值";
+            }else if (fromres[i].ToString() == "o"){
+                compileres += "食物";
+            }else if (fromres[i].ToString() == "a"){
+                compileres += "水";
+            }else if (fromres[i].ToString() == "u"){
+                compileres += "飽食度";
+            }else if (fromres[i].ToString() == "h"){
+                compileres += "水分";
+            }
+            i++;
+            Debug.Log(fromres[i].ToString());
+            compileres += fromres[i].ToString();
+            i++;
+            while (fromres[i] != ',')
+            {
+                Debug.Log(compileres);
+                Debug.Log(fromres[i].ToString());
+                compileres += fromres[i].ToString();
+                i++;
+            }
+            Debug.Log("called");
+        }
+        ERRES.GetComponent<Text>().text = compileres;
+
+
+        playerInfoMother.SetActive(false);
+        playerHasObjects.SetActive(false);
+        playerTodayEvent.SetActive(false);
+        playerEventHistory.SetActive(true);
     }
 
 }
