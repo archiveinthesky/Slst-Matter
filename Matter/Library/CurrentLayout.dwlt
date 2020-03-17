@@ -113,10 +113,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 913, y: 448}
-  m_MaxSize: {x: 22008, y: 10024}
+  m_MinSize: {x: 917, y: 448}
+  m_MaxSize: {x: 22012, y: 10024}
   vertical: 0
-  controlID: 3698
+  controlID: 3731
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 448}
   m_MaxSize: {x: 4002, y: 8048}
   vertical: 1
-  controlID: 3776
+  controlID: 3732
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -187,8 +187,8 @@ MonoBehaviour:
     y: 485
     width: 907
     height: 462
-  m_MinSize: {x: 202, y: 224}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
@@ -317,8 +317,8 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 1
-    m_VSlider: 1
+    m_HSlider: 0
+    m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
@@ -331,18 +331,18 @@ MonoBehaviour:
       y: 17
       width: 905
       height: 425
-    m_Scale: {x: 5, y: 5}
-    m_Translation: {x: 452.5, y: 212.49994}
+    m_Scale: {x: 0.39351854, y: 0.3935185}
+    m_Translation: {x: 452.5, y: 212.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -90.5
-      y: -42.49999
-      width: 181
-      height: 85
+      x: -1149.8823
+      y: -540
+      width: 2299.7646
+      height: 1080
     m_MinimalGUI: 1
   m_defaultScale: 0.3935185
   m_TargetTexture: {fileID: 0}
@@ -461,9 +461,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 502c0000
-      m_LastClickedID: 11344
-      m_ExpandedIDs: d6fbffffca2a0000502c0000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: b8f8ffff24300000b4300000ce3000003a320000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -530,14 +530,14 @@ MonoBehaviour:
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\User\Desktop\data\Development\RSES-Matter\Matter
+  m_LastProjectPath: C:\Users\andre\Desktop\data\GitHub\RSES-Matter\MATTER
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: e02d0000
     m_LastClickedID: 11744
-    m_ExpandedIDs: ffffffff0000000068260000b8260000d82600001427000024270000d0270000de27000000280000a8280000c22800000a2900000e29000074290000e0290000e6290000ac2c0000ae2c0000b02c0000b22c0000b42c0000
+    m_ExpandedIDs: ffffffff00000000f22b00000a2c00003a2d00008e2d0000c62d00005c2e0000662e0000842e00001a2f00002e2f0000602f0000642f0000b82f00000e300000143000008c3200008e320000903200009232000094320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -565,7 +565,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 439}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff0000000068260000b8260000d82600001427000024270000d0270000de27000000280000a8280000c22800000a2900000e29000074290000e0290000e6290000ac2c0000ae2c0000b02c0000b22c0000b42c0000
+    m_ExpandedIDs: ffffffff00000000f22b00000a2c00003a2d00008e2d0000c62d00005c2e0000662e0000842e00001a2f00002e2f0000602f0000642f0000b82f00000e300000143000008c3200008e320000903200009232000094320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

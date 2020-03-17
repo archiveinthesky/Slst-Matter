@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class dayManager : MonoBehaviour
 {
     public GameObject fadeCloth;
+    public GameObject dayShower;
     private int dayCounter;
 
     void Awake()
@@ -16,15 +18,19 @@ public class dayManager : MonoBehaviour
     public void dayEnd()
     {
         fadeCloth.SetActive(true);
+        dayShower.SetActive(false);
         fadeCloth.GetComponent<Animator>().Play("nextday");
     }
-    public void newDay() 
+    public void newDay()
     {
         fadeCloth.SetActive(true);
+        dayShower.SetActive(true);
         GetComponent<lifeData>().saveData();
         dayCounter++;
+        dayShower.GetComponent<Text>().text = "第" + dayCounter + "天";
         GetComponent<lifeData>().setVal("d", dayCounter);
         GetComponent<recievedata>().newDay();
+        GetComponent<PlayerInfoManager>().newday();
         fadeCloth.GetComponent<Animator>().Play("showday");
     }
 
@@ -34,5 +40,6 @@ public class dayManager : MonoBehaviour
     }
 
 
-    
+
+
 }

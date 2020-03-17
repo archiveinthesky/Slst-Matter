@@ -16,6 +16,7 @@ public class PlayerInfoManager : MonoBehaviour
     public GameObject HOLPT, HORPT;
     public GameObject TETXT;
     public GameObject ERTXT, ERRES;
+    private bool eventdone;
 
     void Start()
     {
@@ -26,6 +27,11 @@ public class PlayerInfoManager : MonoBehaviour
     {
         enterUIInfoBtn.GetComponent<Transform>().position = new Vector3(Camera.main.GetComponent<Transform>().position.x - 930, enterUIInfoBtn.GetComponent<Transform>().position.y, enterUIInfoBtn.GetComponent<Transform>().position.z);
         UIInfo.GetComponent<Transform>().position = new Vector3(Camera.main.GetComponent<Transform>().position.x, UIInfo.GetComponent<Transform>().position.y, UIInfo.GetComponent<Transform>().position.z);
+    }
+
+    public void newday()
+    {
+        eventdone = false;
     }
 
     public void enableUIInfo()
@@ -43,6 +49,15 @@ public class PlayerInfoManager : MonoBehaviour
     public void doneExitUIInfo()
     {
         UIInfo.SetActive(false);
+        if (eventdone)
+        {
+            controller.GetComponent<dayManager>().dayEnd();
+        }
+    }
+
+    public void eventDecided()
+    {
+        eventdone = true;
     }
 
     public void enterPlayerInfo()
@@ -126,15 +141,24 @@ public class PlayerInfoManager : MonoBehaviour
         Debug.Log(fromres.Length);
         for (int i = 0; i < fromres.Length; i++)
         {
-            if (fromres[i].ToString() == "p"){
+            if (fromres[i].ToString() == "p")
+            {
                 compileres += "生命值";
-            }else if (fromres[i].ToString() == "o"){
+            }
+            else if (fromres[i].ToString() == "o")
+            {
                 compileres += "食物";
-            }else if (fromres[i].ToString() == "a"){
+            }
+            else if (fromres[i].ToString() == "a")
+            {
                 compileres += "水";
-            }else if (fromres[i].ToString() == "u"){
+            }
+            else if (fromres[i].ToString() == "u")
+            {
                 compileres += "飽食度";
-            }else if (fromres[i].ToString() == "h"){
+            }
+            else if (fromres[i].ToString() == "h")
+            {
                 compileres += "水分";
             }
             i++;
