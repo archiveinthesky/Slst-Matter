@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class dayManager : MonoBehaviour
 {
@@ -23,15 +24,22 @@ public class dayManager : MonoBehaviour
     }
     public void newDay()
     {
-        fadeCloth.SetActive(true);
-        dayShower.SetActive(true);
-        GetComponent<lifeData>().saveData();
-        dayCounter++;
-        dayShower.GetComponent<Text>().text = "第" + dayCounter + "天";
-        GetComponent<lifeData>().setVal("d", dayCounter);
-        GetComponent<recievedata>().newDay();
-        GetComponent<PlayerInfoManager>().newday();
-        fadeCloth.GetComponent<Animator>().Play("showday");
+        if (dayCounter == 31)
+        {
+            SceneManager.LoadScene("endScene");
+        }
+        else
+        {
+            fadeCloth.SetActive(true);
+            dayShower.SetActive(true);
+            GetComponent<lifeData>().saveData();
+            dayCounter++;
+            dayShower.GetComponent<Text>().text = "第" + dayCounter + "天";
+            GetComponent<lifeData>().setVal("d", dayCounter);
+            GetComponent<recievedata>().newDay();
+            GetComponent<PlayerInfoManager>().newday();
+            fadeCloth.GetComponent<Animator>().Play("showday");
+        }
     }
 
     public void newDayEnd()

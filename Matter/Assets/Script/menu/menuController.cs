@@ -12,7 +12,6 @@ public class menuController : MonoBehaviour
     public GameObject entername, et_input, et_confirm, et_return;
     private int instatus; // 1 = canvas, 2 = chose game, 3 = options menu
     private int selectedSlot;
-    public bool enableLogoAnimation;
     private bool firstrun, inOptions, creatingSlots, trashbinOpen;
     void Start()
     {
@@ -29,14 +28,9 @@ public class menuController : MonoBehaviour
         inOptions = false;
         trashbinOpen = false;
         selectedSlot = 0;
-        if (enableLogoAnimation) { logointro.SetActive(true); playlogo(); }
-        else { canvasin(); }
+        canvasin();
     }
 
-    void playlogo()
-    {
-        logointro.GetComponent<Animator>().Play("logo");
-    }
 
     public void canvasin()
     {

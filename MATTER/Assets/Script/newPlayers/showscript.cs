@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class showscript : MonoBehaviour
 {
     public GameObject dpti, dpsub, block;
@@ -63,10 +64,6 @@ public class showscript : MonoBehaviour
         animSp.Add(0.1f);
         StartCoroutine(sequence());
     }
-    void Update()
-    {
-
-    }
 
     IEnumerator sequence()
     {
@@ -90,8 +87,13 @@ public class showscript : MonoBehaviour
 
         }
 
+        yield return new WaitForSeconds(1);
+        PlayerPrefs.SetInt("doneNewPlayer", 1);
+        SceneManager.LoadScene("menu");
+
         dpsub.SetActive(false);
         dpti.SetActive(false);
+
 
     }
 

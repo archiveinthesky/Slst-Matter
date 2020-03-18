@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/LogoAnimation.unity
+    guid: 0e1638de91fc9374faeb7a8c8ac9f258
+  - enabled: 1
+    path: Assets/Scenes/newPlayers.unity
+    guid: ab15a8588d9b9a442903a112db4e778f
+  - enabled: 1
     path: Assets/Scenes/menu.unity
     guid: 0d93d0aaaf65f294fa43ff6a6a66e8cd
   - enabled: 1
     path: Assets/Scenes/maincave.unity
     guid: 530f9896447e66e47ba05e0b5baed8da
+  - enabled: 1
+    path: Assets/Scenes/endScene.unity
+    guid: fdc6e33a7ef70874488f2a0bd9d7a138
   m_configObjects: {}
