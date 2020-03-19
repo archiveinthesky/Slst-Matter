@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class objDescribe : MonoBehaviour
 {
-    public GameObject objectPanel, PanelImage, PanelTitle, PanelText;
+    public GameObject objectPanel, PanelImage, PanelTitle, PanelText, PanelApply;
     public Sprite[] objectsTexture;
     public List<string> objectTitle;
     public List<string> objectDescribe;
+    public List<string> objectApply;
     public bool inPanel;
+    private int mostRecentID;
 
     void Start()
     {
@@ -18,15 +20,15 @@ public class objDescribe : MonoBehaviour
         objectTitle.Add("醫藥書");
         objectTitle.Add("儲物櫃");
         objectTitle.Add("能量飲料");
-        objectTitle.Add("急救箱");
+        objectTitle.Add("急救箱"); //sp6
         objectTitle.Add("手電筒");
-        objectTitle.Add("食物");
+        objectTitle.Add("食物"); //sp8
         objectTitle.Add("腎上腺素");
         objectTitle.Add("香菇");
         objectTitle.Add("步槍");
         objectTitle.Add("返魂香");
         objectTitle.Add("相片");
-        objectTitle.Add("水");
+        objectTitle.Add("水"); //14
 
         objectDescribe.Add("祖傳的護身符\n聽家人說能除邪添運\n這次準備來研發解藥時就戴上了");
         objectDescribe.Add("一把破舊的斧頭\n之前在基地中的緊急工具中發現的");
@@ -43,6 +45,22 @@ public class objDescribe : MonoBehaviour
         objectDescribe.Add("之前在某個地方拍的\n可是卻想不起來在哪裡");
         objectDescribe.Add("公司送來的水\n可飲用以補回30%水分");
 
+        objectApply.Add("");
+        objectApply.Add("");
+        objectApply.Add("");
+        objectApply.Add("");
+        objectApply.Add("");
+        objectApply.Add("使用急救包");
+        objectApply.Add("");
+        objectApply.Add("食用一罐食物");
+        objectApply.Add("");
+        objectApply.Add("");
+        objectApply.Add("");
+        objectApply.Add("");
+        objectApply.Add("");
+        objectApply.Add("喝一灌水");
+
+
     }
 
     public void init(int id)
@@ -54,8 +72,41 @@ public class objDescribe : MonoBehaviour
             PanelImage.GetComponent<Image>().sprite = objectsTexture[id];
             PanelTitle.GetComponent<Text>().text = objectTitle[id];
             PanelText.GetComponent<Text>().text = objectDescribe[id];
+            if (objectApply[id] != "")
+            {
+                PanelApply.SetActive(true);
+                PanelApply.GetComponent<Text>().text = objectApply[id];
+            }
+            else
+            {
+                PanelApply.SetActive(false);
+            }
+            mostRecentID = id;
             objectPanel.GetComponent<Animator>().Play("panel-zoom-in");
         }
+    }
+
+    public void objApplyValue()
+    {
+        if (mostRecentID == 5)
+        {
+            GetComponent<lifeData>().setVal("p", GetComponent<lifeData>().getVal("p") + 50);
+            GetComponent<objectManager>().caveObjects[5] -= 1;
+
+        }
+        else if (mostRecentID == 7)
+        {
+            GetComponent<lifeData>().setVal("u", GetComponent<lifeData>().getVal("u") + 30);
+            GetComponent<lifeData>().setVal("o", GetComponent<lifeData>().getVal("o") - 1);
+        }
+        else if (mostRecentID == 13)
+        {
+            GetComponent<lifeData>().setVal("h", GetComponent<lifeData>().getVal("h") + 30);
+            Debug.Log(GetComponent<lifeData>().getVal("a"));
+            GetComponent<lifeData>().setVal("a", GetComponent<lifeData>().getVal("a") - 1);
+            Debug.Log(GetComponent<lifeData>().getVal("a"));
+        }
+        exitPanel();
     }
 
     public void completeInit()

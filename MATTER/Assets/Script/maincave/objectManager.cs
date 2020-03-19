@@ -6,10 +6,13 @@ public class objectManager : MonoBehaviour
 {
     public List<GameObject> allObjs;
     public List<int> caveObjects;
+    public List<GameObject> foods;
+    public List<GameObject> waters;
     int counter;
 
     void Start()
     {
+        
         caveObjects.Add(1); //amulet id:1
         caveObjects.Add(1); //axe id:2
         caveObjects.Add(1); //book id:3
@@ -17,13 +20,15 @@ public class objectManager : MonoBehaviour
         caveObjects.Add(1); //energyDrink id:5
         caveObjects.Add(1); //firstAid id:6
         caveObjects.Add(1); //flashLight id:7
-        caveObjects.Add(1); //food id:8
+        caveObjects.Add(GetComponent<lifeData>().getVal("o")); //food id:8
         caveObjects.Add(1); //hypePills id:9
         caveObjects.Add(1); //mushroom id:10
         caveObjects.Add(1); //rifle id:11
         caveObjects.Add(1); //solveFlower id:12
         caveObjects.Add(1); //wallPic id:13
-        caveObjects.Add(1); //water id:14
+        caveObjects.Add(GetComponent<lifeData>().getVal("a")); //water id:14
+
+        eatableStuffShow();
     }
 
     void Update()
@@ -31,6 +36,7 @@ public class objectManager : MonoBehaviour
         counter += 1;
         if (counter == 60)
         {
+            eatableStuffShow();
             for (int i = 0; i < allObjs.Count; i++)
             {
                 if (caveObjects[i] == 0)
@@ -43,6 +49,35 @@ public class objectManager : MonoBehaviour
                 }
             }
             counter = 0;
+        }
+    }
+
+    void eatableStuffShow()
+    {
+        caveObjects[7] = GetComponent<lifeData>().getVal("o");
+        caveObjects[13] = GetComponent<lifeData>().getVal("a");
+        for (int i = 0; i < 6; i++)
+        {
+            if (i + 1 > GetComponent<lifeData>().getVal("o"))
+            {
+                foods[i].SetActive(false);
+            }
+            else
+            {
+                foods[i].SetActive(true);
+            }
+        }
+
+        for (int i = 0; i < 6; i++)
+        {
+            if (i + 1 > GetComponent<lifeData>().getVal("a"))
+            {
+                waters[i].SetActive(false);
+            }
+            else
+            {
+                waters[i].SetActive(true);
+            }
         }
     }
 

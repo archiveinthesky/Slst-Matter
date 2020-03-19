@@ -17,11 +17,11 @@ public class lifeData : MonoBehaviour
     {
         inSlot = loadSlot;
         days = PlayerPrefs.GetInt("sl" + loadSlot + "d");
-        health = PlayerPrefs.GetInt("sl" + loadSlot + "p");
-        waterStorage = PlayerPrefs.GetInt("sl" + loadSlot + "a");
+        health = 30;//PlayerPrefs.GetInt("sl" + loadSlot + "p");
+        waterStorage = 3;//PlayerPrefs.GetInt("sl" + loadSlot + "a");
         foodStorage = PlayerPrefs.GetInt("sl" + loadSlot + "o");
-        hunger = PlayerPrefs.GetInt("sl" + loadSlot + "u");
-        thirst = PlayerPrefs.GetInt("sl" + loadSlot + "h");
+        hunger = 10; //PlayerPrefs.GetInt("sl" + loadSlot + "u");
+        thirst = 10; //PlayerPrefs.GetInt("sl" + loadSlot + "h");
     }
 
     public int getVal(string valueName)
@@ -64,22 +64,55 @@ public class lifeData : MonoBehaviour
         }
         else if (valueName == "p")
         {
+            Debug.Log(value);
+            if (value > 100)
+            {
+                value = 100;
+            }
+            if (health + value < 0)
+            {
+                value = 0;
+            }
             health = value;
         }
         else if (valueName == "a")
         {
+            if (waterStorage + value < 0)
+            {
+                value = 0;
+            }
             waterStorage = value;
         }
         else if (valueName == "o")
         {
+            if (foodStorage + value < 0)
+            {
+                value = 0;
+            }
             foodStorage = value;
         }
         else if (valueName == "u")
         {
+            if (value > 100)
+            {
+                value = 100;
+            }
+            if (hunger + value < 0)
+            {
+                value = 0;
+            }
             hunger = value;
         }
         else if (valueName == "h")
         {
+            if (value > 100)
+            {
+                value = 100;
+            }
+            if (thirst + value < 0)
+            {
+                value = 0;
+            }
             thirst = value;
         }
     }

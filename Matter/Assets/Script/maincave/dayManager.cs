@@ -8,6 +8,7 @@ public class dayManager : MonoBehaviour
 {
     public GameObject fadeCloth;
     public GameObject dayShower;
+    public bool inAnimation;
     private int dayCounter;
 
     void Awake()
@@ -18,12 +19,16 @@ public class dayManager : MonoBehaviour
     }
     public void dayEnd()
     {
+        inAnimation = true;
+        fadeCloth.GetComponent<Transform>().position = new Vector3(Camera.main.transform.position.x, fadeCloth.GetComponent<Transform>().position.y, fadeCloth.GetComponent<Transform>().position.z);
         fadeCloth.SetActive(true);
         dayShower.SetActive(false);
+
         fadeCloth.GetComponent<Animator>().Play("nextday");
     }
     public void newDay()
     {
+        inAnimation  = true;
         if (dayCounter == 31)
         {
             SceneManager.LoadScene("endScene");
@@ -45,6 +50,7 @@ public class dayManager : MonoBehaviour
     public void newDayEnd()
     {
         fadeCloth.SetActive(false);
+        inAnimation = false;
     }
 
 

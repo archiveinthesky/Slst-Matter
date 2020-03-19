@@ -20,7 +20,7 @@ public class objectControl : MonoBehaviour
     {
         //Debug.Log(Input.touchCount);
 
-        if (Input.touchCount > 0 && !GetComponent<objDescribe>().inPanel)
+        if (Input.touchCount > 0 && !GetComponent<objDescribe>().inPanel && GetComponent<dayManager>().inAnimation != true)
         {
             touch = Input.GetTouch(0);
             if (wasTouched)
@@ -51,11 +51,11 @@ public class objectControl : MonoBehaviour
             wasTouched = false;
         }
 
-        if (Input.GetKey("a"))
+        if (Input.GetKey("a") && !GetComponent<objDescribe>().inPanel && GetComponent<dayManager>().inAnimation != true)
         {
             mainCamera.GetComponent<Transform>().position = new Vector3(mainCamera.GetComponent<Transform>().position.x - 10, mainCamera.GetComponent<Transform>().position.y, mainCamera.GetComponent<Transform>().position.z);
         }
-        else if (Input.GetKey("d"))
+        else if (Input.GetKey("d") && !GetComponent<objDescribe>().inPanel && GetComponent<dayManager>().inAnimation != true)
         {
             mainCamera.GetComponent<Transform>().position = new Vector3(mainCamera.GetComponent<Transform>().position.x + 10, mainCamera.GetComponent<Transform>().position.y, mainCamera.GetComponent<Transform>().position.z);
         }
