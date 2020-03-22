@@ -16,7 +16,8 @@ public class PlayerInfoManager : MonoBehaviour
     public GameObject HOLPT, HORPT;
     public GameObject TETXT;
     public GameObject ERTXT, ERRES;
-    private bool eventdone;
+    private string todayevent, yesterdayDescription, yesterdayeffect;
+    private bool eventdone, eventDecision;
 
     void Start()
     {
@@ -31,7 +32,12 @@ public class PlayerInfoManager : MonoBehaviour
 
     public void newday()
     {
+        List<string> retrieveEvent = GetComponent<EventSystem>().getEvents();
         eventdone = false;
+        yesterdayDescription = retrieveEvent[0];
+        yesterdayeffect = retrieveEvent[1];
+        todayevent = retrieveEvent[2];
+        applyEffect(yesterdayeffect);
     }
 
     public void enableUIInfo()
@@ -120,12 +126,22 @@ public class PlayerInfoManager : MonoBehaviour
         modeTodayEventBtn.GetComponent<Text>().color = new Vector4(0, 255, 200, 255);
         modeEventHistoryBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
 
-        TETXT.GetComponent<Text>().text = "hi";
+        TETXT.GetComponent<Text>().text = todayevent;
 
         playerInfoMother.SetActive(false);
         playerHasObjects.SetActive(false);
         playerTodayEvent.SetActive(true);
         playerEventHistory.SetActive(false);
+    }
+
+    public void eventConfirm()
+    {
+        eventDecision = true;
+    }
+
+    public void eventDecline()
+    {
+        eventDecision = false;
     }
 
     public void enterEventResult()
@@ -135,9 +151,9 @@ public class PlayerInfoManager : MonoBehaviour
         modeTodayEventBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
         modeEventHistoryBtn.GetComponent<Text>().color = new Vector4(0, 255, 200, 255);
 
-        ERTXT.GetComponent<Text>().text = "result text";
+        ERTXT.GetComponent<Text>().text = yesterdayDescription;
         string compileres = "";
-        string fromres = "o+2,";
+        string fromres = yesterdayeffect;
         Debug.Log(fromres.Length);
         for (int i = 0; i < fromres.Length; i++)
         {
@@ -172,7 +188,7 @@ public class PlayerInfoManager : MonoBehaviour
                 compileres += fromres[i].ToString();
                 i++;
             }
-            Debug.Log("called");
+            compileres += "\n";
         }
         ERRES.GetComponent<Text>().text = compileres;
 
@@ -181,6 +197,39 @@ public class PlayerInfoManager : MonoBehaviour
         playerHasObjects.SetActive(false);
         playerTodayEvent.SetActive(false);
         playerEventHistory.SetActive(true);
+    }
+
+    void applyEffect(string changes)
+    {
+        for (int i = 0; i < changes.Length; i++)
+        {
+            string edititem = changes[i].ToString();
+            i++;
+            int times;
+            if (changes[i].ToString() == "+")
+            {
+                times = 1;
+            }
+            else
+            {
+                times = -1;
+            }
+            i++;
+            int editval = 0;
+            while (changes[i].ToString() != ",")
+            {
+                editval *= 10;
+                Debug.Log(changes[i].ToString());
+                editval += int.Parse(changes[i].ToString());
+                i++;
+            }
+            GetComponent<lifeData>().setVal(edititem, GetComponent<lifeData>().getVal(edititem) + editval * times);
+        }
+    }
+
+    public void dayEnd()
+    {
+        GetComponent<EventSystem>().setEventDecision(eventDecision);
     }
 
 }

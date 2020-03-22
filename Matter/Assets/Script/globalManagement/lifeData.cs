@@ -8,20 +8,28 @@ public class lifeData : MonoBehaviour
     public int inSlot;
     private int days, health, waterStorage, foodStorage, hunger, thirst;
 
-    void Start()
+    void Awake()
     {
         init(PlayerPrefs.GetInt("currentGame"));
+    }
+
+    void Update()
+    {
+        if (health <= 0)
+        {
+            PlayerPrefs.SetInt("endgameId", 0);
+        }
     }
 
     public void init(int loadSlot)
     {
         inSlot = loadSlot;
         days = PlayerPrefs.GetInt("sl" + loadSlot + "d");
-        health = 30;//PlayerPrefs.GetInt("sl" + loadSlot + "p");
-        waterStorage = 3;//PlayerPrefs.GetInt("sl" + loadSlot + "a");
+        health = PlayerPrefs.GetInt("sl" + loadSlot + "p");
+        waterStorage = PlayerPrefs.GetInt("sl" + loadSlot + "a");
         foodStorage = PlayerPrefs.GetInt("sl" + loadSlot + "o");
-        hunger = 10; //PlayerPrefs.GetInt("sl" + loadSlot + "u");
-        thirst = 10; //PlayerPrefs.GetInt("sl" + loadSlot + "h");
+        hunger = PlayerPrefs.GetInt("sl" + loadSlot + "u");
+        thirst = PlayerPrefs.GetInt("sl" + loadSlot + "h");
     }
 
     public int getVal(string valueName)

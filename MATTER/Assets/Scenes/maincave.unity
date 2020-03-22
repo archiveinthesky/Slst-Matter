@@ -166,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &23686504
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2019,12 +2019,11 @@ GameObject:
   - component: {fileID: 319791033}
   - component: {fileID: 319791032}
   - component: {fileID: 319791031}
-  - component: {fileID: 319791030}
   - component: {fileID: 319791034}
+  - component: {fileID: 319791040}
   - component: {fileID: 319791039}
   - component: {fileID: 319791035}
   - component: {fileID: 319791036}
-  - component: {fileID: 319791037}
   - component: {fileID: 319791038}
   m_Layer: 0
   m_Name: Controller
@@ -2033,18 +2032,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &319791030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319791029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac5692e6bcc45a14b902a97b50c08449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &319791031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2148,18 +2135,6 @@ MonoBehaviour:
   fadeCloth: {fileID: 685192484}
   dayShower: {fileID: 1651160399}
   inAnimation: 0
---- !u!114 &319791037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319791029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac5692e6bcc45a14b902a97b50c08449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &319791038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2240,6 +2215,25 @@ MonoBehaviour:
   - {fileID: 274698497}
   - {fileID: 1734066474}
   - {fileID: 302388609}
+--- !u!114 &319791040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319791029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30fba126f9243b4f94cb8aab6f2f83a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  events: []
+  ert: []
+  erteff: []
+  erf: []
+  erfeff: []
+  usedEvents: 
+  choice: 0
 --- !u!1 &332356171
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,7 +2653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &548836990
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3704,7 +3698,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: -200}
+  m_AnchoredPosition: {x: 150, y: -310}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &919874862
@@ -3749,6 +3743,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 319791038}
         m_MethodName: eventDecided
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 319791038}
+        m_MethodName: eventDecline
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6953,8 +6958,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.7, y: 74.4}
-  m_SizeDelta: {x: 1818.9, y: 361.6}
+  m_AnchoredPosition: {x: 0, y: 22.500006}
+  m_SizeDelta: {x: 1818.9, y: 495}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1821859770
 MonoBehaviour:
@@ -7103,7 +7108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -200}
+  m_AnchoredPosition: {x: -200, y: -310}
   m_SizeDelta: {x: 190, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1853714071
@@ -7148,6 +7153,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 319791038}
         m_MethodName: eventDecided
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 319791038}
+        m_MethodName: eventConfirm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

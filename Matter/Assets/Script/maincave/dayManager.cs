@@ -11,9 +11,9 @@ public class dayManager : MonoBehaviour
     public bool inAnimation;
     private int dayCounter;
 
-    void Awake()
+    void Start()
     {
-        dayCounter = 0;
+        dayCounter = GetComponent<lifeData>().getVal("d") - 1;
         newDay();
 
     }
@@ -23,13 +23,13 @@ public class dayManager : MonoBehaviour
         fadeCloth.GetComponent<Transform>().position = new Vector3(Camera.main.transform.position.x, fadeCloth.GetComponent<Transform>().position.y, fadeCloth.GetComponent<Transform>().position.z);
         fadeCloth.SetActive(true);
         dayShower.SetActive(false);
-
+        GetComponent<PlayerInfoManager>().dayEnd();
         fadeCloth.GetComponent<Animator>().Play("nextday");
     }
     public void newDay()
     {
-        inAnimation  = true;
-        if (dayCounter == 31)
+        inAnimation = true;
+        if (dayCounter == 31 || GetComponent<lifeData>().getVal("p") <= 0)
         {
             SceneManager.LoadScene("endScene");
         }
@@ -37,11 +37,11 @@ public class dayManager : MonoBehaviour
         {
             fadeCloth.SetActive(true);
             dayShower.SetActive(true);
-            GetComponent<lifeData>().saveData();
             dayCounter++;
-            dayShower.GetComponent<Text>().text = "第" + dayCounter + "天";
             GetComponent<lifeData>().setVal("d", dayCounter);
-            GetComponent<recievedata>().newDay();
+            GetComponent<lifeData>().saveData();
+            dayShower.GetComponent<Text>().text = "第" + dayCounter + "天";
+            GetComponent<EventSystem>().newDay();
             GetComponent<PlayerInfoManager>().newday();
             fadeCloth.GetComponent<Animator>().Play("showday");
         }
@@ -52,6 +52,8 @@ public class dayManager : MonoBehaviour
         fadeCloth.SetActive(false);
         inAnimation = false;
     }
+
+
 
 
 

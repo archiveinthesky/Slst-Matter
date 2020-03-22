@@ -34,11 +34,11 @@ public class datacontrol : MonoBehaviour
         s2titxt.text = "存檔二 " + PlayerPrefs.GetString("pps2ttln");
         s3titxt.text = "存檔三 " + PlayerPrefs.GetString("pps3ttln");
         if (PlayerPrefs.GetString("pps1ttln") == "") { s1detxt.text = "展開一場新的生存冒險!"; }
-        else { s1detxt.text = "第" + PlayerPrefs.GetInt("sl1d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl1h"); }
+        else { s1detxt.text = "第" + PlayerPrefs.GetInt("sl1d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl1p"); }
         if (PlayerPrefs.GetString("pps2ttln") == "") { s2detxt.text = "展開一場新的生存冒險!"; }
-        else { s2detxt.text = "第" + PlayerPrefs.GetInt("sl2d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl2h"); }
+        else { s2detxt.text = "第" + PlayerPrefs.GetInt("sl2d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl2p"); }
         if (PlayerPrefs.GetString("pps3ttln") == "") { s3detxt.text = "展開一場新的生存冒險!"; }
-        else { s3detxt.text = "第" + PlayerPrefs.GetInt("sl3d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl3h"); }
+        else { s3detxt.text = "第" + PlayerPrefs.GetInt("sl3d") + "天 " + "生命值剩餘: " + PlayerPrefs.GetInt("sl3p"); }
     }
 
     public void swapToDeleteTitles()
@@ -117,6 +117,12 @@ public class datacontrol : MonoBehaviour
         PlayerPrefs.DeleteKey("sl" + saveslot + "o");
         PlayerPrefs.DeleteKey("sl" + saveslot + "u");
         PlayerPrefs.DeleteKey("sl" + saveslot + "h");
+        for (int i = 0; i < PlayerPrefs.GetInt("sl" + saveslot + "ev"); i++)
+        {
+            PlayerPrefs.DeleteKey("sl" + saveslot + "ev_l_" + i);
+        }
+        PlayerPrefs.DeleteKey("sl" + PlayerPrefs.GetInt("sl" + saveslot + "ev") + "ev");
+        PlayerPrefs.DeleteKey("sl" + saveslot + "ev_c");
     }
 
     public void createGame(int saveslot, string nameselected)
