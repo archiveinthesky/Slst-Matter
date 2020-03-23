@@ -41,6 +41,7 @@ public class dayManager : MonoBehaviour
             GetComponent<lifeData>().setVal("d", dayCounter);
             GetComponent<lifeData>().saveData();
             dayShower.GetComponent<Text>().text = "第" + dayCounter + "天";
+            GetComponent<SolveContSystem>().newday(dayCounter);
             GetComponent<EventSystem>().newDay();
             GetComponent<PlayerInfoManager>().newday();
             fadeCloth.GetComponent<Animator>().Play("showday");

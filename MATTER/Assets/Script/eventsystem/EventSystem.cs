@@ -180,61 +180,78 @@ public class EventSystem : MonoBehaviour
 
     public void newDay()
     {
-        int todayID;
-        if (firstDay != true && PlayerPrefs.GetInt("waitingEvent") != 0)
+        if (GetComponent<SolveContSystem>().checkOverrideEvent() == false)
         {
-            todayID = PlayerPrefs.GetInt("waitingEvent");
+            int todayID;
+            if (firstDay != true && PlayerPrefs.GetInt("waitingEvent") != 0)
+            {
+                todayID = PlayerPrefs.GetInt("waitingEvent");
+            }
+            else
+            {
+                todayID = Random.Range(0, events.Count - 1);
+            }
+            while (usedEvents.Contains(todayID))
+            {
+                todayID = Random.Range(0, events.Count - 1);
+            }
+            saveAllData();
+            usedEvents.Add(todayID);
+            PlayerPrefs.SetInt("waitingEvent", todayID);
         }
-        else
-        {
-            todayID = Random.Range(0, events.Count - 1);
-        }
-        while (usedEvents.Contains(todayID))
-        {
-            todayID = Random.Range(0, events.Count - 1);
-        }
-        saveAllData();
-        usedEvents.Add(todayID);
-        PlayerPrefs.SetInt("waitingEvent", todayID);
     }
 
     public List<string> getEvents()
     {
-        List<string> re = new List<string>();
-        Debug.Log(erteff.Count);
-        Debug.Log(erfeff.Count);
-        try
+        if (GetComponent<SolveContSystem>().checkOverrideEvent() == false)
         {
-            if (choice)
+            List<string> re = new List<string>();
+            Debug.Log(erteff.Count);
+            Debug.Log(erfeff.Count);
+            try
             {
-                re.Add(ert[usedEvents[usedEvents.Count - 2]]);
-                re.Add(erteff[usedEvents[usedEvents.Count - 2]]);
+                if (choice)
+                {
+                    re.Add(ert[usedEvents[usedEvents.Count - 2]]);
+                    re.Add(erteff[usedEvents[usedEvents.Count - 2]]);
+                }
+                else
+                {
+                    re.Add(erf[usedEvents[usedEvents.Count - 2]]);
+                    re.Add(erfeff[usedEvents[usedEvents.Count - 2]]);
+                }
             }
-            else
+            catch
             {
-                re.Add(erf[usedEvents[usedEvents.Count - 2]]);
-                re.Add(erfeff[usedEvents[usedEvents.Count - 2]]);
+                re.Add("尚未觸發事件");
+                re.Add("");
             }
-        }
-        catch
-        {
-            re.Add("尚未觸發事件");
-            re.Add("");
-        }
 
 
-        if (GetComponent<lifeData>().getVal("d") == 1)
-        {
-            re[0] = "尚未觸發事件";
-            re[1] = "";
+            if (GetComponent<lifeData>().getVal("d") == 1)
+            {
+                re[0] = "尚未觸發事件";
+                re[1] = "";
+            }
+            re.Add(events[usedEvents[usedEvents.Count - 1]]);
+            return re;
         }
-        re.Add(events[usedEvents[usedEvents.Count - 1]]);
-        return re;
+        else
+        {
+            return GetComponent<SolveContSystem>().getTodaysEvent();
+        }
     }
 
     public void setEventDecision(bool decide)
     {
-        choice = decide;
+        if (GetComponent<SolveContSystem>().checkOverrideEvent() == false)
+        {
+            choice = decide;
+        }
+        else
+        {
+            GetComponent<SolveContSystem>().tempSaveChoice = decide;
+        }
     }
 
     public void loadEventData()

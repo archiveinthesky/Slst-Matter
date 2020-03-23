@@ -6,6 +6,7 @@ public class SolveContSystem : MonoBehaviour
 {
     public List<string> ContEvent, EveTrue, EveFalse, re;
     public GameObject DeclineButton;
+    public bool tempSaveChoice;
     private int days;
     private int triggerDay;
     private int line;
@@ -51,16 +52,21 @@ public class SolveContSystem : MonoBehaviour
         EveTrue.Add("");
         EveFalse.Add("");
         //10(1 day after)
-        ContEvent.Add("時間過了很久，人們已經開始修復在災難中變得破敗的城市，這樣的日子真的很棒，一切貌似正在回到以往的輝煌");
-        EveTrue.Add("1正當你以為一切正在好轉時，異變突然發生，進行重建工作的人們開始發狂，身上長出了奇怪的肉塊，看似再次變成了喪屍，更加壯碩、強大，更具毀滅性，這一次已經無法阻止了，看著悲劇再次重演的你明白了前因後果，想起了那日的軍人們【他們的臂章不是一般的紅十字軍徽，而是六芒星】。在死亡來臨的前一刻，你多麼希望能倒回分歧的那一刻，就算沒有能力拯救世界，但至少也要知道事情的真相，讓自己能夠死得瞑目。"); // end
+        ContEvent.Add("時間過了很久，人們已經開始修復在災難中變得破敗的城市，這樣的日子真的很棒，一切貌似正在回到以往的輝煌。正當你以為一切正在好轉時，異變突然發生，進行重建工作的人們開始發狂，身上長出了奇怪的肉塊，看似再次變成了喪屍，更加壯碩、強大，更具毀滅性，這一次已經無法阻止了，看著悲劇再次重演的你明白了前因後果，想起了那日的軍人們【他們的臂章不是一般的紅十字軍徽，而是六芒星】。在死亡來臨的前一刻，你多麼希望能倒回分歧的那一刻，就算沒有能力拯救世界，但至少也要知道事情的真相，讓自己能夠死得瞑目。");
+        EveTrue.Add(""); // end
         EveFalse.Add("");
 
         line = 0;
+        triggerDay = Random.Range(2, 3);
 
     }
 
     public void newday(int daycounter)
     {
+        if (checkOverrideEvent())
+        {
+            applyChoice(tempSaveChoice);
+        }
         days = daycounter;
     }
 
@@ -98,7 +104,39 @@ public class SolveContSystem : MonoBehaviour
                     return true;
                 }
                 break;
-            
+
+            case 6:
+                if (triggerDay >= days)
+                {
+                    return true;
+                }
+                break;
+
+            case 7:
+                if (triggerDay >= days /* +返魂香 */)
+                {
+                    return true;
+                }
+                break;
+            case 8:
+                if (triggerDay >= days)
+                {
+                    return true;
+                }
+                break;
+            case 9:
+                if (triggerDay >= days)
+                {
+                    return true;
+                }
+                break;
+            case 10:
+                if (triggerDay >= days)
+                {
+                    return true;
+                }
+                break;
+
         }
         return false;
     }
@@ -127,35 +165,124 @@ public class SolveContSystem : MonoBehaviour
                 break;
 
             case 3:
-                re.Add(ContEvent[0]);
-                re.Add(EveTrue[0]);
-                re.Add(EveFalse[0]);
+                re.Add(ContEvent[3]);
+                re.Add(EveTrue[3]);
+                re.Add(EveFalse[3]);
                 break;
             case 4:
-                re.Add(ContEvent[0]);
-                re.Add(EveTrue[0]);
-                re.Add(EveFalse[0]);
+                re.Add(ContEvent[4]);
+                re.Add(EveTrue[4]);
+                re.Add(EveFalse[4]);
                 break;
             case 5:
-                re.Add(ContEvent[0]);
-                re.Add(EveTrue[0]);
-                re.Add(EveFalse[0]);
+                //end
                 break;
             case 6:
-                re.Add(ContEvent[0]);
-                re.Add(EveTrue[0]);
-                re.Add(EveFalse[0]);
+                //end
                 break;
             case 7:
-                re.Add(ContEvent[0]);
-                re.Add(EveTrue[0]);
-                re.Add(EveFalse[0]);
+                //end
                 break;
-
+            case 8:
+                re.Add(ContEvent[5]);
+                re.Add(EveTrue[5]);
+                re.Add(EveFalse[5]);
+                break;
+            case 9:
+                re.Add(ContEvent[6]);
+                re.Add(EveTrue[6]);
+                re.Add(EveFalse[6]);
+                break;
+            case 10:
+                re.Add(ContEvent[7]);
+                re.Add(EveTrue[7]);
+                re.Add(EveFalse[7]);
+                break;
+            case 11:
+                re.Add(ContEvent[8]);
+                re.Add(EveTrue[8]);
+                re.Add(EveFalse[8]);
+                break;
+            case 12:
+                re.Add(ContEvent[9]);
+                re.Add(EveTrue[9]);
+                re.Add(EveFalse[9]);
+                break;
+                //end                
 
         }
         return re;
     }
 
+    public void applyChoice(bool choice)
+    {
+        if (choice)
+        {
+            switch (line)
+            {
+                case 0:
+                    line = 1;
+                    triggerDay = days + Random.Range(2, 3);
+                    break;
+                case 1:
+                    line = 2;
+                    triggerDay = days + Random.Range(2, 3);
+                    break;
+                case 2:
+                    line = 3;
+                    triggerDay = days + Random.Range(2, 3);
+                    break;
+                case 3:
+                    line = 4;
+                    triggerDay = days + Random.Range(2, 3);
+                    break;
+                case 4:
+                    line = 6;
+                    triggerDay = days + Random.Range(2, 3);
+                    break;
+
+                case 8:
+                    line = 9;
+                    triggerDay = days + Random.Range(2, 3);
+                    break;
+                case 9:
+                    line = 10;
+                    triggerDay = days + Random.Range(2, 3);
+                    break;
+                case 10:
+                    line = 11;
+                    triggerDay = days + Random.Range(2, 3);
+                    break;
+                case 11:
+                    line = 12;
+                    triggerDay = days + Random.Range(2, 3);
+                    break;
+            }
+        }
+        else
+        {
+            switch (line)
+            {
+                case 1:
+                    line = 6;
+                    triggerDay = days + Random.Range(2, 3);
+                    break;
+                case 2:
+                    line = 6;
+                    triggerDay = days + Random.Range(2, 3);
+                    break;
+                case 3:
+                    line = 5;
+                    triggerDay = days + Random.Range(2, 3);
+                    break;
+                //end
+                case 4:
+                    line = 7;
+                    triggerDay = days + Random.Range(2, 3);
+                    break;
+                    //end
+            }
+        }
+    }
 
 }
