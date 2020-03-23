@@ -59,111 +59,102 @@ public class SolveContSystem : MonoBehaviour
 
     }
 
-    public void newDay(int dayCount)
+    public void newday(int daycounter)
     {
-        days = dayCount;
+        days = daycounter;
     }
 
-    public bool checkContTrigger()
-    {
-        if (conditionCheck())
-        {
-            re.Clear();
-            switch (line)
-            {
-
-            }
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public List<string> contEventGet()
-    {
-        return re;
-    }
-
-    bool conditionCheck()
+    public bool checkOverrideEvent()
     {
         switch (line)
         {
             case 0:
-                if (days > Random.Range(3, 4))
+                if (triggerDay >= days)
                 {
                     return true;
                 }
                 break;
-
             case 1:
-                if (days >= triggerDay)
+                if (triggerDay >= days)
                 {
                     return true;
                 }
                 break;
-
             case 2:
-                if (days >= triggerDay)
+                if (triggerDay >= days)
                 {
                     return true;
                 }
                 break;
-
             case 3:
-                if (days >= triggerDay)
+                if (triggerDay >= days)
                 {
                     return true;
                 }
                 break;
-
-
+            case 4:
+                if (triggerDay >= days /* +返魂香 */ )
+                {
+                    return true;
+                }
+                break;
+            
         }
-
         return false;
     }
 
-    public void recieveChoice(bool choice)
+    public List<string> getTodaysEvent()
     {
-        if (choice)
+        re.Clear();
+        switch (line)
         {
-            switch (line)
-            {
-                case 0:
-                    triggerDay = days + Random.Range(2, 3);
-                    line = 1;
-                    break;
-                case 2:
-                    triggerDay = days + 1;
-                    line = 3;
-                    break;
-                case 3:
-                    triggerDay = days + Random.Range(2, 3);
-                    line = 4;
-                    break;
-                case 4:
-                    line = 6;
-                    break;
-                case 6:
-                    line = 7;
-                    break;
-            }
+            case 0:
+                re.Add(ContEvent[0]);
+                re.Add(EveTrue[0]);
+                re.Add(EveFalse[0]);
+                break;
+
+            case 1:
+                re.Add(ContEvent[1]);
+                re.Add(EveTrue[1]);
+                re.Add(EveFalse[1]);
+                break;
+
+            case 2:
+                re.Add(ContEvent[2]);
+                re.Add(EveTrue[2]);
+                re.Add(EveFalse[2]);
+                break;
+
+            case 3:
+                re.Add(ContEvent[0]);
+                re.Add(EveTrue[0]);
+                re.Add(EveFalse[0]);
+                break;
+            case 4:
+                re.Add(ContEvent[0]);
+                re.Add(EveTrue[0]);
+                re.Add(EveFalse[0]);
+                break;
+            case 5:
+                re.Add(ContEvent[0]);
+                re.Add(EveTrue[0]);
+                re.Add(EveFalse[0]);
+                break;
+            case 6:
+                re.Add(ContEvent[0]);
+                re.Add(EveTrue[0]);
+                re.Add(EveFalse[0]);
+                break;
+            case 7:
+                re.Add(ContEvent[0]);
+                re.Add(EveTrue[0]);
+                re.Add(EveFalse[0]);
+                break;
+
+
         }
-        else
-        {
-            switch (line)
-            {
-                case 3:
-                    line = 5;
-                    //end
-                    break;
-                case 6:
-                    line = 8;
-                    //end
-                    break;
-            }
-        }
+        return re;
     }
 
 
