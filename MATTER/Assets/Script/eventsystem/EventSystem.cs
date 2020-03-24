@@ -7,7 +7,8 @@ public class EventSystem : MonoBehaviour
     public List<string> events, ert, erteff, erf, erfeff;
     public List<int> usedEvents;
     public bool choice;
-    private bool firstDay;
+    private List<string> ContEveRe;
+    private bool firstDay, yesterdayContEve;
 
 
     void Awake()
@@ -179,7 +180,7 @@ public class EventSystem : MonoBehaviour
     }
 
     public void newDay()
-    {
+    {;
         if (GetComponent<SolveContSystem>().checkOverrideEvent() == false)
         {
             int todayID;
@@ -203,11 +204,18 @@ public class EventSystem : MonoBehaviour
 
     public List<string> getEvents()
     {
-        if (GetComponent<SolveContSystem>().checkOverrideEvent() == false)
+
+        List<string> re = new List<string>();
+
+        Debug.Log(erteff.Count);
+        Debug.Log(erfeff.Count);
+        if (yesterdayContEve)
         {
-            List<string> re = new List<string>();
-            Debug.Log(erteff.Count);
-            Debug.Log(erfeff.Count);
+            re.Add(ContEveRe[1]);
+            re.Add(ContEveRe[2]);
+        }
+        else
+        {
             try
             {
                 if (choice)
@@ -233,17 +241,23 @@ public class EventSystem : MonoBehaviour
                 re[0] = "尚未觸發事件";
                 re[1] = "";
             }
-            re.Add(events[usedEvents[usedEvents.Count - 1]]);
-            return re;
+        }
+        if (GetComponent<SolveContSystem>().checkOverrideEvent())
+        {
+            ContEveRe = GetComponent<SolveContSystem>().getTodaysEvent();
+            re.Add(ContEveRe[0]);
         }
         else
         {
-            return GetComponent<SolveContSystem>().getTodaysEvent();
+            re.Add(events[usedEvents[usedEvents.Count - 1]]);
         }
+        return re;
+
     }
 
     public void setEventDecision(bool decide)
     {
+        yesterdayContEve = GetComponent<SolveContSystem>().checkOverrideEvent();
         if (GetComponent<SolveContSystem>().checkOverrideEvent() == false)
         {
             choice = decide;

@@ -72,66 +72,67 @@ public class SolveContSystem : MonoBehaviour
 
     public bool checkOverrideEvent()
     {
+        Debug.Log(triggerDay);
         switch (line)
         {
             case 0:
-                if (triggerDay >= days)
+                if (days >= triggerDay)
                 {
                     return true;
                 }
                 break;
             case 1:
-                if (triggerDay >= days)
+                if (days >= triggerDay)
                 {
                     return true;
                 }
                 break;
             case 2:
-                if (triggerDay >= days)
+                if (days >= triggerDay)
                 {
                     return true;
                 }
                 break;
             case 3:
-                if (triggerDay >= days)
+                if (days >= triggerDay)
                 {
                     return true;
                 }
                 break;
             case 4:
-                if (triggerDay >= days /* +返魂香 */ )
+                if (days >= triggerDay /* +返魂香 */ )
                 {
                     return true;
                 }
                 break;
 
             case 6:
-                if (triggerDay >= days)
+                if (days >= triggerDay)
                 {
                     return true;
                 }
                 break;
 
             case 7:
-                if (triggerDay >= days /* +返魂香 */)
+                if (days >= triggerDay /* +返魂香 */)
                 {
                     return true;
                 }
                 break;
             case 8:
-                if (triggerDay >= days)
+                if (days >= triggerDay)
                 {
                     return true;
                 }
                 break;
             case 9:
-                if (triggerDay >= days)
+                if (days >= triggerDay)
                 {
                     return true;
                 }
                 break;
             case 10:
-                if (triggerDay >= days)
+                if (days >= triggerDay)
                 {
                     return true;
                 }
@@ -211,8 +212,11 @@ public class SolveContSystem : MonoBehaviour
                 //end                
 
         }
+        
         return re;
     }
+
+    
 
     public void applyChoice(bool choice)
     {
