@@ -213,11 +213,11 @@ public class SolveContSystem : MonoBehaviour
                 //end                
 
         }
-        
+
         return re;
     }
 
-    
+
 
     public void applyChoice(bool choice)
     {

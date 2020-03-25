@@ -181,18 +181,14 @@ public class EventSystem : MonoBehaviour
 
     public void newDay()
     {
-        Debug.Log("testing unity random");
         int todayID;
         if (firstDay != true && PlayerPrefs.GetInt(PlayerPrefs.GetInt("currentGame") + "_waitingEvent") != 0)
         {
             todayID = PlayerPrefs.GetInt(PlayerPrefs.GetInt("currentGame") + "_waitingEvent");
-            Debug.Log("this is not supposed to happen");
         }
         else
         {
-            Debug.Log("Doing unity random");
             todayID = Random.Range(0, events.Count - 1);
-            Debug.Log("Result: " + todayID);
         }
         while (usedEvents.Contains(todayID))
         {
@@ -200,7 +196,6 @@ public class EventSystem : MonoBehaviour
         }
         saveAllData();
         usedEvents.Add(todayID);
-        Debug.Log(todayID);
         PlayerPrefs.SetInt(PlayerPrefs.GetInt("currentGame") + "_waitingEvent", todayID);
 
     }
@@ -211,9 +206,15 @@ public class EventSystem : MonoBehaviour
         List<string> re = new List<string>();
         if (GetComponent<SolveContSystem>().triggeredYesterday)
         {
-            re.Add(ContEveRe[1]);
-            
-            re.Add(ContEveRe[2]);
+            if (choice)
+            {
+                re.Add(ContEveRe[1]);
+            }
+            else
+            {
+                re.Add(ContEveRe[2]);
+            }
+            re.Add("");
         }
         else
         {
@@ -232,7 +233,6 @@ public class EventSystem : MonoBehaviour
             }
             catch
             {
-                Debug.Log("Catched error");
                 re.Add("尚未觸發事件");
                 re.Add("");
             }
@@ -240,7 +240,6 @@ public class EventSystem : MonoBehaviour
 
             if (GetComponent<lifeData>().getVal("d") == 1)
             {
-                Debug.Log("First Day Triggered");
                 re[0] = "尚未觸發事件";
                 re[1] = "";
             }
@@ -252,8 +251,6 @@ public class EventSystem : MonoBehaviour
         }
         else
         {
-            Debug.Log(usedEvents.Count);
-            Debug.Log(usedEvents[0]);
             re.Add(events[usedEvents[usedEvents.Count - 1]]);
         }
         return re;

@@ -154,7 +154,6 @@ public class PlayerInfoManager : MonoBehaviour
         ERTXT.GetComponent<Text>().text = yesterdayDescription;
         string compileres = "";
         string fromres = yesterdayeffect;
-        Debug.Log(fromres.Length);
         try
         {
             for (int i = 0; i < fromres.Length; i++)
