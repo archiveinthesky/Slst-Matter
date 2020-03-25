@@ -47,15 +47,19 @@ public class descriptionManager : MonoBehaviour
         PlayerPrefs.DeleteKey("sl" + saveslot + "o");
         PlayerPrefs.DeleteKey("sl" + saveslot + "u");
         PlayerPrefs.DeleteKey("sl" + saveslot + "h");
-        PlayerPrefs.DeleteKey("sl" + saveslot + "ev_c");
         for (int i = 0; i < PlayerPrefs.GetInt("sl" + saveslot + "ev"); i++)
         {
             PlayerPrefs.DeleteKey("sl" + saveslot + "ev_l_" + i);
         }
-        PlayerPrefs.DeleteKey("sl" + saveslot + "ev");
-
+        PlayerPrefs.DeleteKey("sl" + PlayerPrefs.GetInt("sl" + saveslot + "ev") + "ev");
+        PlayerPrefs.DeleteKey("sl" + saveslot + "ev_c");
+        PlayerPrefs.DeleteKey(saveslot + "_waitingEvent");
+        PlayerPrefs.DeleteKey("CntEveSys_triggerDay");
+        PlayerPrefs.DeleteKey("CntEveSys_line");
         fadecloth.SetActive(true);
         fadecloth.GetComponent<Animator>().Play("fadecloth-fade-out");
+
+        
     }
 
 

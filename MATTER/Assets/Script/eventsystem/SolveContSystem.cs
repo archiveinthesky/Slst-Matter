@@ -6,7 +6,7 @@ public class SolveContSystem : MonoBehaviour
 {
     public List<string> ContEvent, EveTrue, EveFalse, re;
     public GameObject DeclineButton;
-    public bool tempSaveChoice;
+    public bool tempSaveChoice, triggeredYesterday;
     private int days;
     private int triggerDay;
     private int line;
@@ -56,8 +56,8 @@ public class SolveContSystem : MonoBehaviour
         EveTrue.Add(""); // end
         EveFalse.Add("");
 
-        line = 0;
-        triggerDay = Random.Range(2, 3);
+        line = PlayerPrefs.GetInt("CntEveSys_line");
+        triggerDay = PlayerPrefs.GetInt("CntEveSys_triggerDay");
 
     }
 
@@ -67,12 +67,13 @@ public class SolveContSystem : MonoBehaviour
         {
             applyChoice(tempSaveChoice);
         }
+        PlayerPrefs.SetInt("CntEveSys_triggerDay", triggerDay);
+        PlayerPrefs.SetInt("CntEveSys_line", line);
         days = daycounter;
     }
 
     public bool checkOverrideEvent()
     {
-        Debug.Log(triggerDay);
         switch (line)
         {
             case 0:
@@ -220,6 +221,7 @@ public class SolveContSystem : MonoBehaviour
 
     public void applyChoice(bool choice)
     {
+        triggeredYesterday = checkOverrideEvent();
         if (choice)
         {
             switch (line)

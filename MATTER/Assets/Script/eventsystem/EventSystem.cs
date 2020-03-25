@@ -180,38 +180,39 @@ public class EventSystem : MonoBehaviour
     }
 
     public void newDay()
-    {;
-        if (GetComponent<SolveContSystem>().checkOverrideEvent() == false)
+    {
+        Debug.Log("testing unity random");
+        int todayID;
+        if (firstDay != true && PlayerPrefs.GetInt(PlayerPrefs.GetInt("currentGame") + "_waitingEvent") != 0)
         {
-            int todayID;
-            if (firstDay != true && PlayerPrefs.GetInt("waitingEvent") != 0)
-            {
-                todayID = PlayerPrefs.GetInt("waitingEvent");
-            }
-            else
-            {
-                todayID = Random.Range(0, events.Count - 1);
-            }
-            while (usedEvents.Contains(todayID))
-            {
-                todayID = Random.Range(0, events.Count - 1);
-            }
-            saveAllData();
-            usedEvents.Add(todayID);
-            PlayerPrefs.SetInt("waitingEvent", todayID);
+            todayID = PlayerPrefs.GetInt(PlayerPrefs.GetInt("currentGame") + "_waitingEvent");
+            Debug.Log("this is not supposed to happen");
         }
+        else
+        {
+            Debug.Log("Doing unity random");
+            todayID = Random.Range(0, events.Count - 1);
+            Debug.Log("Result: " + todayID);
+        }
+        while (usedEvents.Contains(todayID))
+        {
+            todayID = Random.Range(0, events.Count - 1);
+        }
+        saveAllData();
+        usedEvents.Add(todayID);
+        Debug.Log(todayID);
+        PlayerPrefs.SetInt(PlayerPrefs.GetInt("currentGame") + "_waitingEvent", todayID);
+
     }
 
     public List<string> getEvents()
     {
 
         List<string> re = new List<string>();
-
-        Debug.Log(erteff.Count);
-        Debug.Log(erfeff.Count);
-        if (yesterdayContEve)
+        if (GetComponent<SolveContSystem>().triggeredYesterday)
         {
             re.Add(ContEveRe[1]);
+            
             re.Add(ContEveRe[2]);
         }
         else
@@ -231,6 +232,7 @@ public class EventSystem : MonoBehaviour
             }
             catch
             {
+                Debug.Log("Catched error");
                 re.Add("尚未觸發事件");
                 re.Add("");
             }
@@ -238,6 +240,7 @@ public class EventSystem : MonoBehaviour
 
             if (GetComponent<lifeData>().getVal("d") == 1)
             {
+                Debug.Log("First Day Triggered");
                 re[0] = "尚未觸發事件";
                 re[1] = "";
             }
@@ -249,6 +252,8 @@ public class EventSystem : MonoBehaviour
         }
         else
         {
+            Debug.Log(usedEvents.Count);
+            Debug.Log(usedEvents[0]);
             re.Add(events[usedEvents[usedEvents.Count - 1]]);
         }
         return re;

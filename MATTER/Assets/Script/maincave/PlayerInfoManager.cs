@@ -155,41 +155,45 @@ public class PlayerInfoManager : MonoBehaviour
         string compileres = "";
         string fromres = yesterdayeffect;
         Debug.Log(fromres.Length);
-        for (int i = 0; i < fromres.Length; i++)
+        try
         {
-            if (fromres[i].ToString() == "p")
+            for (int i = 0; i < fromres.Length; i++)
             {
-                compileres += "生命值";
-            }
-            else if (fromres[i].ToString() == "o")
-            {
-                compileres += "食物";
-            }
-            else if (fromres[i].ToString() == "a")
-            {
-                compileres += "水";
-            }
-            else if (fromres[i].ToString() == "u")
-            {
-                compileres += "飽食度";
-            }
-            else if (fromres[i].ToString() == "h")
-            {
-                compileres += "水分";
-            }
-            i++;
-            Debug.Log(fromres[i].ToString());
-            compileres += fromres[i].ToString();
-            i++;
-            while (fromres[i] != ',')
-            {
-                Debug.Log(compileres);
+                if (fromres[i].ToString() == "p")
+                {
+                    compileres += "生命值";
+                }
+                else if (fromres[i].ToString() == "o")
+                {
+                    compileres += "食物";
+                }
+                else if (fromres[i].ToString() == "a")
+                {
+                    compileres += "水";
+                }
+                else if (fromres[i].ToString() == "u")
+                {
+                    compileres += "飽食度";
+                }
+                else if (fromres[i].ToString() == "h")
+                {
+                    compileres += "水分";
+                }
+                i++;
                 Debug.Log(fromres[i].ToString());
                 compileres += fromres[i].ToString();
                 i++;
+                while (fromres[i] != ',')
+                {
+                    Debug.Log(compileres);
+                    Debug.Log(fromres[i].ToString());
+                    compileres += fromres[i].ToString();
+                    i++;
+                }
+                compileres += "\n";
             }
-            compileres += "\n";
         }
+        catch { }
         ERRES.GetComponent<Text>().text = compileres;
 
 
@@ -201,29 +205,36 @@ public class PlayerInfoManager : MonoBehaviour
 
     void applyEffect(string changes)
     {
-        for (int i = 0; i < changes.Length; i++)
+        try
         {
-            string edititem = changes[i].ToString();
-            i++;
-            int times;
-            if (changes[i].ToString() == "+")
+            for (int i = 0; i < changes.Length; i++)
             {
-                times = 1;
-            }
-            else
-            {
-                times = -1;
-            }
-            i++;
-            int editval = 0;
-            while (changes[i].ToString() != ",")
-            {
-                editval *= 10;
-                Debug.Log(changes[i].ToString());
-                editval += int.Parse(changes[i].ToString());
+                string edititem = changes[i].ToString();
                 i++;
+                int times;
+                if (changes[i].ToString() == "+")
+                {
+                    times = 1;
+                }
+                else
+                {
+                    times = -1;
+                }
+                i++;
+                int editval = 0;
+                while (changes[i].ToString() != ",")
+                {
+                    editval *= 10;
+                    Debug.Log(changes[i].ToString());
+                    editval += int.Parse(changes[i].ToString());
+                    i++;
+                }
+                GetComponent<lifeData>().setVal(edititem, GetComponent<lifeData>().getVal(edititem) + editval * times);
             }
-            GetComponent<lifeData>().setVal(edititem, GetComponent<lifeData>().getVal(edititem) + editval * times);
+        }
+        catch
+        {
+
         }
     }
 

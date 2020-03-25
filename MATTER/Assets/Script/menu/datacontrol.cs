@@ -123,6 +123,9 @@ public class datacontrol : MonoBehaviour
         }
         PlayerPrefs.DeleteKey("sl" + PlayerPrefs.GetInt("sl" + saveslot + "ev") + "ev");
         PlayerPrefs.DeleteKey("sl" + saveslot + "ev_c");
+        PlayerPrefs.DeleteKey(saveslot + "_waitingEvent");
+        PlayerPrefs.DeleteKey("CntEveSys_triggerDay");
+        PlayerPrefs.DeleteKey("CntEveSys_line");
     }
 
     public void createGame(int saveslot, string nameselected)
@@ -134,6 +137,8 @@ public class datacontrol : MonoBehaviour
         PlayerPrefs.SetInt("sl" + saveslot + "o", 5);
         PlayerPrefs.SetInt("sl" + saveslot + "u", 100);
         PlayerPrefs.SetInt("sl" + saveslot + "h", 100);
+        PlayerPrefs.SetInt("CntEveSys_triggerDay", Random.Range(2,3));
+        PlayerPrefs.SetInt("CntEveSys_line", 0);
         startGame(saveslot);
     }
 
