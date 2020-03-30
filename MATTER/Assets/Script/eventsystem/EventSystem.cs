@@ -204,20 +204,20 @@ public class EventSystem : MonoBehaviour
 
     public List<string> getEvents()
     {
-        Debug.Log("Event System GetEvents Called");
+        //Debug.Log("Event System GetEvents Called");
         List<string> re = new List<string>();
         if (CntTriggeredYesterday)
         {
-            Debug.Log("Event System Get Events Cnt Triggered");
+            //Debug.Log("Event System Get Events Cnt Triggered");
             if (yesterdayChoice)
             {
                 re.Add(ContEveRe[1]);
-                Debug.Log("True");
+                //Debug.Log("True");
             }
             else
             {
                 re.Add(ContEveRe[2]);
-                Debug.Log(ContEveRe[2]);
+                //Debug.Log(ContEveRe[2]);
             }
             re.Add("");
         }
@@ -250,7 +250,7 @@ public class EventSystem : MonoBehaviour
             }
         }
         
-        Debug.Log("Event system Check Overide event: " + GetComponent<SolveContSystem>().checkOverrideEvent());
+        //Debug.Log("Event system Check Overide event: " + GetComponent<SolveContSystem>().checkOverrideEvent());
         if (GetComponent<SolveContSystem>().checkOverrideEvent())
         {
             CntTriggeredToday = true;

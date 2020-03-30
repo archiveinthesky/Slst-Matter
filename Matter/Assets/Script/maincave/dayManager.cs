@@ -35,6 +35,7 @@ public class dayManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("EndGame Id: " + PlayerPrefs.GetInt("endgameId"));
             fadeCloth.SetActive(true);
             dayShower.SetActive(true);
             dayCounter++;

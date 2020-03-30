@@ -252,7 +252,7 @@ public class SolveContSystem : MonoBehaviour
                     break;
                 case 4:
                     line = 6;
-                    triggerDay = days + Random.Range(2, 4);
+                    PlayerPrefs.SetInt("endgameId", 2);
                     break;
 
                 case 8:
@@ -299,8 +299,9 @@ public class SolveContSystem : MonoBehaviour
                     break;
                 //end
                 case 4:
-                    line = 7;
-                    triggerDay = days + Random.Range(2, 4);
+                    line = 5;
+                    PlayerPrefs.SetInt("endgameId", 1);
+                    triggerDay = days + 1;
                     break;
                     //end
 

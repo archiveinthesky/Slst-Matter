@@ -36,9 +36,9 @@ public class PlayerInfoManager : MonoBehaviour
 
     public void newday()
     {
-        Debug.Log("entering newday " + GetComponent<lifeData>().getVal("d"));
+        //Debug.Log("entering newday " + GetComponent<lifeData>().getVal("d"));
         List<string> retrieveEvent = GetComponent<EventSystem>().getEvents();
-        Debug.Log("Retrive Event Complete!");
+        //Debug.Log("Retrive Event Complete!");
         eventdone = false;
         yesterdayDescription = retrieveEvent[0];
         yesterdayeffect = retrieveEvent[1];
@@ -50,23 +50,23 @@ public class PlayerInfoManager : MonoBehaviour
         {
             todayEventDisp.Add(todayevent.Substring(0, 125));
             todayevent = todayevent.Substring(125);
-            Debug.Log("Today event len: " + todayevent.Length);
+            //Debug.Log("Today event len: " + todayevent.Length);
         }
         todayEventDisp.Add(todayevent);
         todayevent = "";
-        Debug.Log("Yesterday event len: " + yesterdayDescription.Length);
+        //Debug.Log("Yesterday event len: " + yesterdayDescription.Length);
         while (yesterdayDescription.Length > 75)
         {
             ydChangeDisp.Add(yesterdayDescription.Substring(0, 75));
             yesterdayDescription = yesterdayDescription.Substring(75);
-            Debug.Log("Yesterday event len: " + yesterdayDescription.Length);
+            //Debug.Log("Yesterday event len: " + yesterdayDescription.Length);
         }
         ydChangeDisp.Add(yesterdayDescription);
         yesterdayDescription = "";
         TEOP = 0;
         EROP = 0;
         applyEffect(yesterdayeffect);
-        Debug.Log("entering newday done");
+        //Debug.Log("entering newday done");
     }
 
     public void enableUIInfo()
@@ -150,7 +150,7 @@ public class PlayerInfoManager : MonoBehaviour
 
     public void enterTodayEvent()
     {
-        //Debug.Log("entering today event");
+        ////Debug.Log("entering today event");
         modePlayerInfoBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
         modeHasObjectsBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
         modeTodayEventBtn.GetComponent<Text>().color = new Vector4(0, 255, 200, 255);
@@ -181,7 +181,7 @@ public class PlayerInfoManager : MonoBehaviour
         playerTodayEvent.SetActive(true);
         playerEventHistory.SetActive(false);
 
-        //Debug.Log("entering today event done");
+        ////Debug.Log("entering today event done");
     }
 
     public void eventConfirm()
@@ -208,7 +208,7 @@ public class PlayerInfoManager : MonoBehaviour
 
     public void enterEventResult()
     {
-        Debug.Log("entering yesterday event");
+        //Debug.Log("entering yesterday event");
         modePlayerInfoBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
         modeHasObjectsBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
         modeTodayEventBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
@@ -242,13 +242,13 @@ public class PlayerInfoManager : MonoBehaviour
                     compileres += "水分";
                 }
                 i++;
-                Debug.Log(fromres[i].ToString());
+                //Debug.Log(fromres[i].ToString());
                 compileres += fromres[i].ToString();
                 i++;
                 while (fromres[i] != ',')
                 {
-                    Debug.Log(compileres);
-                    Debug.Log(fromres[i].ToString());
+                    //Debug.Log(compileres);
+                    //Debug.Log(fromres[i].ToString());
                     compileres += fromres[i].ToString();
                     i++;
                 }
@@ -284,7 +284,7 @@ public class PlayerInfoManager : MonoBehaviour
         playerTodayEvent.SetActive(false);
         playerEventHistory.SetActive(true);
 
-        Debug.Log("entering yesterday event done");
+        //Debug.Log("entering yesterday event done");
     }
 
     public void erNextPage()
@@ -321,7 +321,7 @@ public class PlayerInfoManager : MonoBehaviour
                 while (changes[i].ToString() != ",")
                 {
                     editval *= 10;
-                    //Debug.Log(changes[i].ToString());
+                    ////Debug.Log(changes[i].ToString());
                     editval += int.Parse(changes[i].ToString());
                     i++;
                 }
