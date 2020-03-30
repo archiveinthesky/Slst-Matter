@@ -14,10 +14,14 @@ public class PlayerInfoManager : MonoBehaviour
     public GameObject IGDT, IGPT, IGHT, IGWT; // panel player info "InGame_Tet"
     public GameObject IGDS, IGPS, IGHS, IGWS;
     public GameObject HOLPT, HORPT;
-    public GameObject TETXT;
-    public GameObject ERTXT, ERRES;
+    public GameObject TETXT, TETL, TETR;
+    private int TEOP;
+    public GameObject ERTXT, ERRES, ERTL, ERTR;
+    private int EROP;
     private string todayevent, yesterdayDescription, yesterdayeffect;
     private bool eventdone, eventDecision;
+
+    public List<string> todayEventDisp, ydChangeDisp;
 
     void Start()
     {
@@ -32,12 +36,37 @@ public class PlayerInfoManager : MonoBehaviour
 
     public void newday()
     {
+        Debug.Log("entering newday " + GetComponent<lifeData>().getVal("d"));
         List<string> retrieveEvent = GetComponent<EventSystem>().getEvents();
+        Debug.Log("Retrive Event Complete!");
         eventdone = false;
         yesterdayDescription = retrieveEvent[0];
         yesterdayeffect = retrieveEvent[1];
         todayevent = retrieveEvent[2];
+
+        todayEventDisp.Clear();
+        ydChangeDisp.Clear();
+        while (todayevent.Length > 125)
+        {
+            todayEventDisp.Add(todayevent.Substring(0, 125));
+            todayevent = todayevent.Substring(125);
+            Debug.Log("Today event len: " + todayevent.Length);
+        }
+        todayEventDisp.Add(todayevent);
+        todayevent = "";
+        Debug.Log("Yesterday event len: " + yesterdayDescription.Length);
+        while (yesterdayDescription.Length > 75)
+        {
+            ydChangeDisp.Add(yesterdayDescription.Substring(0, 75));
+            yesterdayDescription = yesterdayDescription.Substring(75);
+            Debug.Log("Yesterday event len: " + yesterdayDescription.Length);
+        }
+        ydChangeDisp.Add(yesterdayDescription);
+        yesterdayDescription = "";
+        TEOP = 0;
+        EROP = 0;
         applyEffect(yesterdayeffect);
+        Debug.Log("entering newday done");
     }
 
     public void enableUIInfo()
@@ -121,17 +150,38 @@ public class PlayerInfoManager : MonoBehaviour
 
     public void enterTodayEvent()
     {
+        //Debug.Log("entering today event");
         modePlayerInfoBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
         modeHasObjectsBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
         modeTodayEventBtn.GetComponent<Text>().color = new Vector4(0, 255, 200, 255);
         modeEventHistoryBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
 
-        TETXT.GetComponent<Text>().text = todayevent;
+        if (TEOP < todayEventDisp.Count - 1)
+        {
+            TETR.SetActive(true);
+        }
+        else
+        {
+            TETR.SetActive(false);
+        }
+
+        if (TEOP > 0 && todayEventDisp.Count != 0)
+        {
+            TETL.SetActive(true);
+        }
+        else
+        {
+            TETL.SetActive(false);
+        }
+
+        TETXT.GetComponent<Text>().text = todayEventDisp[TEOP];
 
         playerInfoMother.SetActive(false);
         playerHasObjects.SetActive(false);
         playerTodayEvent.SetActive(true);
         playerEventHistory.SetActive(false);
+
+        //Debug.Log("entering today event done");
     }
 
     public void eventConfirm()
@@ -144,14 +194,27 @@ public class PlayerInfoManager : MonoBehaviour
         eventDecision = false;
     }
 
+    public void teNextPage()
+    {
+        TEOP += 1;
+        enterTodayEvent();
+    }
+
+    public void teLastPage()
+    {
+        TEOP -= 1;
+        enterTodayEvent();
+    }
+
     public void enterEventResult()
     {
+        Debug.Log("entering yesterday event");
         modePlayerInfoBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
         modeHasObjectsBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
         modeTodayEventBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
         modeEventHistoryBtn.GetComponent<Text>().color = new Vector4(0, 255, 200, 255);
 
-        ERTXT.GetComponent<Text>().text = yesterdayDescription;
+
         string compileres = "";
         string fromres = yesterdayeffect;
         try
@@ -195,11 +258,45 @@ public class PlayerInfoManager : MonoBehaviour
         catch { }
         ERRES.GetComponent<Text>().text = compileres;
 
+        if (EROP < ydChangeDisp.Count - 1)
+        {
+            ERTR.SetActive(true);
+        }
+        else
+        {
+            ERTR.SetActive(false);
+        }
+
+        if (EROP > 0 && ydChangeDisp.Count != 1)
+        {
+            ERTL.SetActive(true);
+        }
+        else
+        {
+            ERTL.SetActive(false);
+        }
+
+        ERTXT.GetComponent<Text>().text = ydChangeDisp[EROP];
+
 
         playerInfoMother.SetActive(false);
         playerHasObjects.SetActive(false);
         playerTodayEvent.SetActive(false);
         playerEventHistory.SetActive(true);
+
+        Debug.Log("entering yesterday event done");
+    }
+
+    public void erNextPage()
+    {
+        EROP += 1;
+        enterEventResult();
+    }
+
+    public void erLastPage()
+    {
+        EROP -= 1;
+        enterEventResult();
     }
 
     void applyEffect(string changes)
@@ -224,7 +321,7 @@ public class PlayerInfoManager : MonoBehaviour
                 while (changes[i].ToString() != ",")
                 {
                     editval *= 10;
-                    Debug.Log(changes[i].ToString());
+                    //Debug.Log(changes[i].ToString());
                     editval += int.Parse(changes[i].ToString());
                     i++;
                 }

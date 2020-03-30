@@ -29,7 +29,7 @@ public class dayManager : MonoBehaviour
     public void newDay()
     {
         inAnimation = true;
-        if (dayCounter == 31 || GetComponent<lifeData>().getVal("p") <= 0)
+        if (dayCounter == 31 || GetComponent<lifeData>().getVal("p") <= 0 || PlayerPrefs.GetInt("endgameId") != -1)
         {
             SceneManager.LoadScene("endScene");
         }

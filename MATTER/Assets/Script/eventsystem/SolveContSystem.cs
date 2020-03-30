@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SolveContSystem : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class SolveContSystem : MonoBehaviour
 
 
         //6
-        ContEvent.Add("經過了長時間的研究後，你對解藥的研發終於有了實質上的進展，至少你確定它一定是這座森林中的稀有植物，誰會想到小小一片的它竟然是如此珍貴的東西呢?");
+        ContEvent.Add("經過了長時間的研究後，你對解藥的研發終於有了實質上的進展，至少你確定它一定是這座森林中的稀有植物，叫做返魂香，誰會想到小小一片的它竟然是如此珍貴的東西呢?");
         EveTrue.Add("自從你確認了解藥原料的名稱後，你更加積極地進行研究了，只要把返魂香的汁液處理好，那一切就沒問題了");
         EveFalse.Add("自從你確認了解藥原料的名稱後，你更加積極地進行研究了，只要把返魂香的汁液處理好，那一切就沒問題了");// no false
 
@@ -110,6 +111,7 @@ public class SolveContSystem : MonoBehaviour
             case 6:
                 if (days >= triggerDay)
                 {
+                    Debug.Log("Line 6 triggered");
                     return true;
                 }
                 break;
@@ -177,38 +179,44 @@ public class SolveContSystem : MonoBehaviour
                 re.Add(EveFalse[4]);
                 break;
             case 5:
-                //end
+                PlayerPrefs.SetInt("endgameId", 1);
                 break;
             case 6:
-                //end
+                PlayerPrefs.SetInt("endgameId", 2);
                 break;
             case 7:
-                //end
+                PlayerPrefs.SetInt("endgameId", 3);
                 break;
             case 8:
                 re.Add(ContEvent[5]);
                 re.Add(EveTrue[5]);
                 re.Add(EveFalse[5]);
+                DeclineButton.GetComponent<Button>().interactable = false;
                 break;
             case 9:
                 re.Add(ContEvent[6]);
                 re.Add(EveTrue[6]);
                 re.Add(EveFalse[6]);
+                DeclineButton.GetComponent<Button>().interactable = false;
                 break;
             case 10:
                 re.Add(ContEvent[7]);
                 re.Add(EveTrue[7]);
                 re.Add(EveFalse[7]);
+                DeclineButton.GetComponent<Button>().interactable = false;
                 break;
             case 11:
                 re.Add(ContEvent[8]);
                 re.Add(EveTrue[8]);
                 re.Add(EveFalse[8]);
+                DeclineButton.GetComponent<Button>().interactable = false;
+                PlayerPrefs.SetInt("endgameId", 4);
                 break;
             case 12:
                 re.Add(ContEvent[9]);
                 re.Add(EveTrue[9]);
                 re.Add(EveFalse[9]);
+                DeclineButton.GetComponent<Button>().interactable = false;
                 break;
                 //end                
 
@@ -228,40 +236,44 @@ public class SolveContSystem : MonoBehaviour
             {
                 case 0:
                     line = 1;
-                    triggerDay = days + Random.Range(2, 3);
+                    triggerDay = days + Random.Range(2, 4);
                     break;
                 case 1:
                     line = 2;
-                    triggerDay = days + Random.Range(2, 3);
+                    triggerDay = days + Random.Range(2, 4);
                     break;
                 case 2:
                     line = 3;
-                    triggerDay = days + Random.Range(2, 3);
+                    triggerDay = days + Random.Range(2, 4);
                     break;
                 case 3:
                     line = 4;
-                    triggerDay = days + Random.Range(2, 3);
+                    triggerDay = days + Random.Range(2, 4);
                     break;
                 case 4:
                     line = 6;
-                    triggerDay = days + Random.Range(2, 3);
+                    triggerDay = days + Random.Range(2, 4);
                     break;
 
                 case 8:
                     line = 9;
-                    triggerDay = days + Random.Range(2, 3);
+                    DeclineButton.GetComponent<Button>().interactable = true;
+                    triggerDay = days + Random.Range(2, 4);
                     break;
                 case 9:
                     line = 10;
-                    triggerDay = days + Random.Range(2, 3);
+                    DeclineButton.GetComponent<Button>().interactable = true;
+                    triggerDay = days + Random.Range(2, 4);
                     break;
                 case 10:
                     line = 11;
-                    triggerDay = days + Random.Range(2, 3);
+                    triggerDay = days + Random.Range(2, 4);
+                    DeclineButton.GetComponent<Button>().interactable = true;
                     break;
                 case 11:
                     line = 12;
-                    triggerDay = days + Random.Range(2, 3);
+                    triggerDay = days + Random.Range(2, 4);
+                    DeclineButton.GetComponent<Button>().interactable = true;
                     break;
             }
         }
@@ -269,24 +281,30 @@ public class SolveContSystem : MonoBehaviour
         {
             switch (line)
             {
+                case 0:
+                    line = 8;
+                    triggerDay = days + Random.Range(3, 5);
+                    break;
                 case 1:
-                    line = 6;
-                    triggerDay = days + Random.Range(2, 3);
+                    line = 8;
+                    triggerDay = days + Random.Range(2, 4);
                     break;
                 case 2:
-                    line = 6;
-                    triggerDay = days + Random.Range(2, 3);
+                    line = 8;
+                    triggerDay = days + Random.Range(2, 4);
                     break;
                 case 3:
                     line = 5;
-                    triggerDay = days + Random.Range(2, 3);
+                    triggerDay = days +1;
                     break;
                 //end
                 case 4:
                     line = 7;
-                    triggerDay = days + Random.Range(2, 3);
+                    triggerDay = days + Random.Range(2, 4);
                     break;
                     //end
+
+                
             }
         }
     }

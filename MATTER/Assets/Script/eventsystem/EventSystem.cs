@@ -8,7 +8,7 @@ public class EventSystem : MonoBehaviour
     public List<int> usedEvents;
     public bool choice;
     private List<string> ContEveRe;
-    private bool firstDay, yesterdayContEve;
+    private bool firstDay, yesterdayContEve, todayChoice, yesterdayChoice, CntTriggeredYesterday, CntTriggeredToday;
 
 
     void Awake()
@@ -194,6 +194,8 @@ public class EventSystem : MonoBehaviour
         {
             todayID = Random.Range(0, events.Count - 1);
         }
+        yesterdayChoice = todayChoice;
+        CntTriggeredYesterday = CntTriggeredToday;
         saveAllData();
         usedEvents.Add(todayID);
         PlayerPrefs.SetInt(PlayerPrefs.GetInt("currentGame") + "_waitingEvent", todayID);
@@ -202,17 +204,20 @@ public class EventSystem : MonoBehaviour
 
     public List<string> getEvents()
     {
-
+        Debug.Log("Event System GetEvents Called");
         List<string> re = new List<string>();
-        if (GetComponent<SolveContSystem>().triggeredYesterday)
+        if (CntTriggeredYesterday)
         {
-            if (choice)
+            Debug.Log("Event System Get Events Cnt Triggered");
+            if (yesterdayChoice)
             {
                 re.Add(ContEveRe[1]);
+                Debug.Log("True");
             }
             else
             {
                 re.Add(ContEveRe[2]);
+                Debug.Log(ContEveRe[2]);
             }
             re.Add("");
         }
@@ -244,13 +249,17 @@ public class EventSystem : MonoBehaviour
                 re[1] = "";
             }
         }
+        
+        Debug.Log("Event system Check Overide event: " + GetComponent<SolveContSystem>().checkOverrideEvent());
         if (GetComponent<SolveContSystem>().checkOverrideEvent())
         {
+            CntTriggeredToday = true;
             ContEveRe = GetComponent<SolveContSystem>().getTodaysEvent();
             re.Add(ContEveRe[0]);
         }
         else
         {
+            CntTriggeredToday = false;
             re.Add(events[usedEvents[usedEvents.Count - 1]]);
         }
         return re;
@@ -259,6 +268,7 @@ public class EventSystem : MonoBehaviour
 
     public void setEventDecision(bool decide)
     {
+        todayChoice = decide;
         yesterdayContEve = GetComponent<SolveContSystem>().checkOverrideEvent();
         if (GetComponent<SolveContSystem>().checkOverrideEvent() == false)
         {
@@ -281,6 +291,25 @@ public class EventSystem : MonoBehaviour
         {
             choice = false;
         }
+
+        if (PlayerPrefs.GetInt("sl" + saveslot + "ev_yc") == 1)
+        {
+            yesterdayChoice = true;
+        }
+        else if (PlayerPrefs.GetInt("sl" + saveslot + "ev_yc") == -1)
+        {
+            yesterdayChoice = false;
+        }
+
+        if (PlayerPrefs.GetInt("sl" + saveslot + "ev_yet") == 1)
+        {
+            CntTriggeredYesterday = true;
+        }
+        else if (PlayerPrefs.GetInt("sl" + saveslot + "ev_yet") == -1)
+        {
+            CntTriggeredYesterday = false;
+        }
+
         for (int i = 0; i < PlayerPrefs.GetInt("sl" + saveslot + "ev"); i++)
         {
             usedEvents.Add(PlayerPrefs.GetInt("sl" + saveslot + "ev_l_" + i));
@@ -293,7 +322,11 @@ public class EventSystem : MonoBehaviour
     {
         PlayerPrefs.SetInt("sl" + GetComponent<lifeData>().inSlot + "ev", usedEvents.Count);
         int choiceInt = choice ? 1 : -1;
+        int yesterdayChoiceInt = yesterdayChoice ? 1 : -1;
+        int CntTriggeredYesterdayInt = CntTriggeredYesterday ? 1 : -1;
         PlayerPrefs.SetInt("sl" + GetComponent<lifeData>().inSlot + "ev_c", choiceInt);
+        PlayerPrefs.SetInt("sl" + GetComponent<lifeData>().inSlot + "ev_yc", yesterdayChoiceInt);
+        PlayerPrefs.SetInt("sl" + GetComponent<lifeData>().inSlot + "ev_yet", CntTriggeredYesterdayInt);
         for (int i = 0; i < usedEvents.Count; i++)
         {
             PlayerPrefs.SetInt("sl" + GetComponent<lifeData>().inSlot + "ev_l_" + i, usedEvents[i]);

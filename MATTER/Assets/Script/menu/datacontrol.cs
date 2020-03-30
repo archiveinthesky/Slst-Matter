@@ -10,7 +10,7 @@ public class datacontrol : MonoBehaviour
     public GameObject sl1ti, sl1de, sl2ti, sl2de, sl3ti, sl3de;  //SLot1Title, SLot1DEscription
     Text s1titxt, s1detxt, s2titxt, s2detxt, s3titxt, s3detxt;   //Slot1TItleTeXT
     public GameObject fadeingCloth;
-    public bool clearGamePrefs;
+    public bool clearGamePrefs, directEnterSlot1;
     private bool inDeleteMode;
 
     void Awake()
@@ -19,6 +19,14 @@ public class datacontrol : MonoBehaviour
         { PlayerPrefs.DeleteAll(); }
         inDeleteMode = false;
         //createGame(1, "hi");
+    }
+
+    void Start()
+    {
+        if (directEnterSlot1)
+        {
+            createGame(1, "test1");
+        }
     }
 
     public void setslotvals()
@@ -139,6 +147,7 @@ public class datacontrol : MonoBehaviour
         PlayerPrefs.SetInt("sl" + saveslot + "h", 100);
         PlayerPrefs.SetInt("CntEveSys_triggerDay", Random.Range(2,3));
         PlayerPrefs.SetInt("CntEveSys_line", 0);
+        PlayerPrefs.SetInt("endgameId", -1);
         startGame(saveslot);
     }
 
