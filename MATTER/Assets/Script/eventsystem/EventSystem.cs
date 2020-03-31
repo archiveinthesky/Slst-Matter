@@ -249,13 +249,13 @@ public class EventSystem : MonoBehaviour
                 re[1] = "";
             }
         }
-        
+
         //Debug.Log("Event system Check Overide event: " + GetComponent<SolveContSystem>().checkOverrideEvent());
         if (GetComponent<SolveContSystem>().checkOverrideEvent())
         {
             CntTriggeredToday = true;
             ContEveRe = GetComponent<SolveContSystem>().getTodaysEvent();
-            re.Add(ContEveRe[0]);
+            try { re.Add(ContEveRe[0]); } catch { }
         }
         else
         {

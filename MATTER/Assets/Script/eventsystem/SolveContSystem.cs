@@ -253,6 +253,7 @@ public class SolveContSystem : MonoBehaviour
                 case 4:
                     line = 6;
                     PlayerPrefs.SetInt("endgameId", 2);
+                    Debug.Log("Set endgameId to: " + PlayerPrefs.GetInt("endgameId"));
                     break;
 
                 case 8:
@@ -295,12 +296,15 @@ public class SolveContSystem : MonoBehaviour
                     break;
                 case 3:
                     line = 5;
+                    PlayerPrefs.SetInt("endgameId", 1);
+                    Debug.Log("Set endgameId to: " + PlayerPrefs.GetInt("endgameId"));
                     triggerDay = days +1;
                     break;
                 //end
                 case 4:
-                    line = 5;
-                    PlayerPrefs.SetInt("endgameId", 1);
+                    line = 7;
+                    PlayerPrefs.SetInt("endgameId", 3);
+                    Debug.Log("Set endgameId to: " + PlayerPrefs.GetInt("endgameId"));
                     triggerDay = days + 1;
                     break;
                     //end

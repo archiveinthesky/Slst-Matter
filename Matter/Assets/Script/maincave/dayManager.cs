@@ -29,13 +29,14 @@ public class dayManager : MonoBehaviour
     public void newDay()
     {
         inAnimation = true;
-        if (dayCounter == 31 || GetComponent<lifeData>().getVal("p") <= 0 || PlayerPrefs.GetInt("endgameId") != -1)
+        Debug.Log("Day Manager endgameId: " + PlayerPrefs.GetInt("endgameId"));
+        if (dayCounter == 31)
         {
             SceneManager.LoadScene("endScene");
         }
         else
         {
-            Debug.Log("EndGame Id: " + PlayerPrefs.GetInt("endgameId"));
+
             fadeCloth.SetActive(true);
             dayShower.SetActive(true);
             dayCounter++;
@@ -43,6 +44,19 @@ public class dayManager : MonoBehaviour
             GetComponent<lifeData>().saveData();
             dayShower.GetComponent<Text>().text = "第" + dayCounter + "天";
             GetComponent<SolveContSystem>().newday(dayCounter);
+            if (GetComponent<lifeData>().getVal("p") <= 0)
+            {
+                PlayerPrefs.SetInt("endgameId", 0);
+                SceneManager.LoadScene("endScene");
+            }
+            else if (PlayerPrefs.GetInt("endgameId") != -1)
+            {
+                SceneManager.LoadScene("endScene");
+            }
+            else
+            {
+                Debug.Log("EndGame Id: " + PlayerPrefs.GetInt("endgameId"));
+            }
             GetComponent<EventSystem>().newDay();
             GetComponent<PlayerInfoManager>().newday();
             fadeCloth.GetComponent<Animator>().Play("showday");

@@ -295,7 +295,9 @@ public class PlayerInfoManager : MonoBehaviour
 
     public void erLastPage()
     {
+        Debug.Log("Pre EROP: " + EROP);
         EROP -= 1;
+        Debug.Log("Later EROP: " + EROP);
         enterEventResult();
     }
 

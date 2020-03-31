@@ -66,16 +66,21 @@ public class descriptionManager : MonoBehaviour
             leftBtn.SetActive(false);
         }
         description.GetComponent<Text>().text = pagesList[onPage];
+        Debug.Log(pagesList[onPage]);
     }
 
     public void nxtPage()
     {
         onPage += 1;
+        refershDesTxt();
     }
 
     public void lstPage()
     {
+        Debug.Log("Pre Onpage: " + onPage);
         onPage -= 1;
+        Debug.Log("Aft Onpage: " + onPage);
+        refershDesTxt();
     }
 
     public void returnToMainScreen()

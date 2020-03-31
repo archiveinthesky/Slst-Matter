@@ -3045,8 +3045,8 @@ MonoBehaviour:
   sl3ti: {fileID: 638445533}
   sl3de: {fileID: 2078704019}
   fadeingCloth: {fileID: 1549041478}
-  clearGamePrefs: 1
-  directEnterSlot1: 1
+  clearGamePrefs: 0
+  directEnterSlot1: 0
 --- !u!1 &2078704019
 GameObject:
   m_ObjectHideFlags: 0
