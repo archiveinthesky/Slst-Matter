@@ -125,7 +125,9 @@ public class PlayerInfoManager : MonoBehaviour
         modeTodayEventBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
         modeEventHistoryBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
 
+        PanelTitle.GetComponent<Text>().text = "擁有物件";
         string showValsLeft = "", showValsRight = "";
+        
         showValsLeft = showValsLeft + "護身符: " + controller.GetComponent<objectManager>().returnObjsVal(1).ToString() + "\n";
         showValsLeft = showValsLeft + "斧頭: " + controller.GetComponent<objectManager>().returnObjsVal(2) + "\n";
         showValsLeft = showValsLeft + "醫藥書: " + controller.GetComponent<objectManager>().returnObjsVal(3) + "\n";
@@ -155,6 +157,8 @@ public class PlayerInfoManager : MonoBehaviour
         modeHasObjectsBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
         modeTodayEventBtn.GetComponent<Text>().color = new Vector4(0, 255, 200, 255);
         modeEventHistoryBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
+
+        PanelTitle.GetComponent<Text>().text = "當日事件";
 
         if (TEOP < todayEventDisp.Count - 1)
         {
@@ -214,6 +218,7 @@ public class PlayerInfoManager : MonoBehaviour
         modeTodayEventBtn.GetComponent<Text>().color = new Vector4(255, 255, 255, 255);
         modeEventHistoryBtn.GetComponent<Text>().color = new Vector4(0, 255, 200, 255);
 
+        PanelTitle.GetComponent<Text>().text = "事件影響";
 
         string compileres = "";
         string fromres = yesterdayeffect;

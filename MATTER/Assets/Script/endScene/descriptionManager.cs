@@ -27,6 +27,9 @@ public class descriptionManager : MonoBehaviour
         endingNames.Add("疏忽");
         endingDescriptions.Add("正當你以為一切正在好轉時，異變突然發生，進行重建工作的人們開始發狂，身上長出了奇怪的肉塊，看似再次變成了喪屍，更加壯碩、強大，更具毀滅性，這一次已經無法阻止了，看著悲劇再次重演的你明白了前因後果，想起了那日的軍人們【他們的臂章不是一般的紅十字軍徽，而是六芒星】。在死亡來臨的前一刻，你多麼希望能倒回分歧的那一刻，就算沒有能力拯救世界，但至少也要知道事情的真相，讓自己能夠死得瞑目。");
 
+        endingNames.Add("平庸的科學家");
+        endingDescriptions.Add("你持續的在森林裡找了很久，但始終無法找到解藥。你的食物和水逐漸減少，最後你死在了叢林");
+
         fadecloth.GetComponent<Animator>().Play("fadecloth-fade-in");
 
         setTexts(PlayerPrefs.GetInt("endgameId"));

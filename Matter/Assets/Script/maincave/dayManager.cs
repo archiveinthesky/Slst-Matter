@@ -32,6 +32,7 @@ public class dayManager : MonoBehaviour
         Debug.Log("Day Manager endgameId: " + PlayerPrefs.GetInt("endgameId"));
         if (dayCounter == 31)
         {
+            PlayerPrefs.SetInt("endgameId", 5);
             SceneManager.LoadScene("endScene");
         }
         else

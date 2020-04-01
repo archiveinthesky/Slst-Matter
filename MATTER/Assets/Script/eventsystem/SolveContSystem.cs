@@ -140,6 +140,13 @@ public class SolveContSystem : MonoBehaviour
                     return true;
                 }
                 break;
+            
+            case 11:
+                if (days >= triggerDay)
+                {
+                    return true;
+                }
+                break;
 
         }
         return false;
@@ -206,6 +213,7 @@ public class SolveContSystem : MonoBehaviour
                 DeclineButton.GetComponent<Button>().interactable = false;
                 break;
             case 11:
+                Debug.Log("Entering case 11");
                 re.Add(ContEvent[8]);
                 re.Add(EveTrue[8]);
                 re.Add(EveFalse[8]);
@@ -269,6 +277,7 @@ public class SolveContSystem : MonoBehaviour
                 case 10:
                     line = 11;
                     triggerDay = days + Random.Range(2, 4);
+                    Debug.Log("Triggered Case 10: " + triggerDay);
                     DeclineButton.GetComponent<Button>().interactable = true;
                     break;
                 case 11:
@@ -276,6 +285,13 @@ public class SolveContSystem : MonoBehaviour
                     triggerDay = days + Random.Range(2, 4);
                     DeclineButton.GetComponent<Button>().interactable = true;
                     break;
+                
+                case 12:
+                    line = 12;
+                    PlayerPrefs.SetInt("endgameId", 4);
+                    Debug.Log("Set endgameId to: " + PlayerPrefs.GetInt("endgameId"));
+                    break;
+
             }
         }
         else

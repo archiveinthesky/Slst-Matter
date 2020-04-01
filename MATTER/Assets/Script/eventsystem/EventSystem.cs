@@ -255,7 +255,8 @@ public class EventSystem : MonoBehaviour
         {
             CntTriggeredToday = true;
             ContEveRe = GetComponent<SolveContSystem>().getTodaysEvent();
-            try { re.Add(ContEveRe[0]); } catch { }
+            /*try { */
+            re.Add(ContEveRe[0]);// } catch { }
         }
         else
         {
