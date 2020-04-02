@@ -1,6 +1,6 @@
 OSXUniversal
 PlayerPath?
-C:/Users/User/Desktop/data/Matter/V. Alpha.app
+/Users/andrew/Documents/GitHub/Slst-Matter/Releases/V.0.1 Alpha/V.0.1 Alpha Mac.app
 SceneListBegin?
 Assets/Scenes/LogoAnimation.unity
 Assets/Scenes/newPlayers.unity
