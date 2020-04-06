@@ -108,6 +108,7 @@ public class menuController : MonoBehaviour
         {
             GetComponent<datacontrol>().createGame(selectedSlot, et_input.GetComponent<Text>().text);
         }
+        et_return.GetComponent<Button>().interactable = false;
     }
 
     public void enterNameReturn()
