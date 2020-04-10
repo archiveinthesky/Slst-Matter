@@ -304,7 +304,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791034}
+      - m_Target: {fileID: 0}
         m_MethodName: exitPanel
         m_Mode: 1
         m_Arguments:
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: amuletCall
         m_Mode: 1
         m_Arguments:
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: wallPicCall
         m_Mode: 1
         m_Arguments:
@@ -748,7 +748,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: waterCall
         m_Mode: 1
         m_Arguments:
@@ -872,7 +872,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: waterCall
         m_Mode: 1
         m_Arguments:
@@ -1145,7 +1145,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: foodCall
         m_Mode: 1
         m_Arguments:
@@ -1269,7 +1269,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: solveFlowerCall
         m_Mode: 1
         m_Arguments:
@@ -1478,7 +1478,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: foodCall
         m_Mode: 1
         m_Arguments:
@@ -1639,7 +1639,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: waterCall
         m_Mode: 1
         m_Arguments:
@@ -1763,7 +1763,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: enterHasObjects
         m_Mode: 1
         m_Arguments:
@@ -1964,7 +1964,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: waterCall
         m_Mode: 1
         m_Arguments:
@@ -2019,15 +2019,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 319791033}
-  - component: {fileID: 319791032}
   - component: {fileID: 319791031}
-  - component: {fileID: 319791034}
-  - component: {fileID: 319791040}
-  - component: {fileID: 319791039}
-  - component: {fileID: 319791035}
   - component: {fileID: 319791030}
-  - component: {fileID: 319791036}
-  - component: {fileID: 319791038}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -2044,16 +2037,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 319791029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b4594669b1730c4f886aee15a1579c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3bb7a4c681a8e07479a0607c939cc87b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ContEvent: []
-  EveTrue: []
-  EveFalse: []
-  re: []
-  DeclineButton: {fileID: 919874860}
-  tempSaveChoice: 0
-  triggeredYesterday: 0
+  objectTitle: []
+  objectDescribe: []
+  objectApply: []
+  objectCount: 
+  gd: {fileID: 319791031}
 --- !u!114 &319791031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2063,23 +2054,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 319791029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d3a6c731f19ea4e83e43f056a0d708, type: 3}
+  m_Script: {fileID: 11500000, guid: b5ff4310a3f5a364897ebc6acb9b6659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1689235061288910225}
---- !u!114 &319791032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319791029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b00379fd7aabe3846b52f0066ca57ca3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inSlot: 0
+  saveslot: 1
+  incave: 0
 --- !u!4 &319791033
 Transform:
   m_ObjectHideFlags: 0
@@ -2094,174 +2073,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &319791034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319791029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b74967491dd19a459d5fa6b5f01f401, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPanel: {fileID: 1360508371}
-  PanelImage: {fileID: 1511353848}
-  PanelTitle: {fileID: 1649162934}
-  PanelText: {fileID: 218831911}
-  PanelApply: {fileID: 678405339}
-  objectsTexture:
-  - {fileID: 21300000, guid: 39218a66278018d4e88813072cc7fb08, type: 3}
-  - {fileID: 21300000, guid: 2ee7024c12f67a54b91df84a28595228, type: 3}
-  - {fileID: 21300000, guid: d22e9b1f0f0f52841a17de70cee0fa6a, type: 3}
-  - {fileID: 21300000, guid: 8a52e62e1a9fced47a530c45710fcf9a, type: 3}
-  - {fileID: 21300000, guid: 9e3a0aacac0965546ae32ef3d2a52b36, type: 3}
-  - {fileID: 21300000, guid: dfb50922b85262c43bbb8a0708f8208f, type: 3}
-  - {fileID: 21300000, guid: e552852ff0cdddc419226626ffcf54f3, type: 3}
-  - {fileID: 21300000, guid: edeffabb8529c184fb92a2d25ccaf75e, type: 3}
-  - {fileID: 21300000, guid: c2cccb9aec52e94489afb3fca026ddc2, type: 3}
-  - {fileID: 21300000, guid: 46c06bc5dcf52774e93545a1ad8d4ff7, type: 3}
-  - {fileID: 21300000, guid: e08395a2661bc0f409ead0c6c32b9fce, type: 3}
-  - {fileID: 21300000, guid: 29e00d210b47bcb438acdc4d5e4513bb, type: 3}
-  - {fileID: 21300000, guid: 144945e0e69385b44a8f2c0c2b94712a, type: 3}
-  - {fileID: 21300000, guid: 959663eec61d8384a83c118e2dfa38a6, type: 3}
-  objectTitle: []
-  objectDescribe: []
-  objectApply: []
-  inPanel: 0
---- !u!114 &319791035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319791029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35a404bd51d6baf4ba6b5be2c23a9db5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &319791036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319791029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25a66350fd08aab47b9fb1aa66ad4695, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeCloth: {fileID: 685192484}
-  dayShower: {fileID: 1651160399}
-  inAnimation: 0
---- !u!114 &319791038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319791029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7148722e388016e45b2a4ea3ec3e7b08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 319791029}
-  enterUIInfoBtn: {fileID: 1421609658}
-  UIInfo: {fileID: 548836989}
-  modePlayerInfoBtn: {fileID: 1526451521}
-  modeHasObjectsBtn: {fileID: 276131367}
-  modeTodayEventBtn: {fileID: 1383742160}
-  modeEventHistoryBtn: {fileID: 332356171}
-  PanelTitle: {fileID: 1982167229}
-  PanelSub: {fileID: 1938752610}
-  playerInfoMother: {fileID: 722284490}
-  playerHasObjects: {fileID: 264898134}
-  playerTodayEvent: {fileID: 23686503}
-  playerEventHistory: {fileID: 1490045194}
-  IGDT: {fileID: 837174851}
-  IGPT: {fileID: 1457437915}
-  IGHT: {fileID: 508737278}
-  IGWT: {fileID: 1692403003}
-  IGDS: {fileID: 248373457}
-  IGPS: {fileID: 1208796779}
-  IGHS: {fileID: 1611067976}
-  IGWS: {fileID: 1540615475}
-  HOLPT: {fileID: 820014722}
-  HORPT: {fileID: 1442607055}
-  TETXT: {fileID: 1821859768}
-  TETL: {fileID: 1859457989}
-  TETR: {fileID: 1641330792}
-  ERTXT: {fileID: 1388529956}
-  ERRES: {fileID: 1874976655}
-  ERTL: {fileID: 1553306282}
-  ERTR: {fileID: 1681115613}
-  todayEventDisp: []
-  ydChangeDisp: []
---- !u!114 &319791039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319791029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3fe55c91e2aba044b2504d7080b5626, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allObjs:
-  - {fileID: 104425213}
-  - {fileID: 1987958306}
-  - {fileID: 1706838812}
-  - {fileID: 1288729095}
-  - {fileID: 1494835771}
-  - {fileID: 1590540020}
-  - {fileID: 1585570984}
-  - {fileID: 95329948}
-  - {fileID: 1467859395}
-  - {fileID: 935231505}
-  - {fileID: 1742209675}
-  - {fileID: 235596287}
-  - {fileID: 115720115}
-  - {fileID: 1031499493}
-  caveObjects: 
-  foods:
-  - {fileID: 555736600}
-  - {fileID: 404316513}
-  - {fileID: 754689706}
-  - {fileID: 668779753}
-  - {fileID: 255438565}
-  - {fileID: 230045521}
-  waters:
-  - {fileID: 193080830}
-  - {fileID: 1814122863}
-  - {fileID: 197150675}
-  - {fileID: 274698497}
-  - {fileID: 1734066474}
-  - {fileID: 302388609}
---- !u!114 &319791040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319791029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c30fba126f9243b4f94cb8aab6f2f83a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  events: []
-  ert: []
-  erteff: []
-  erf: []
-  erfeff: []
-  usedEvents: 
-  choice: 0
 --- !u!1 &332356171
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,7 +2151,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: enterEventResult
         m_Mode: 1
         m_Arguments:
@@ -2469,7 +2280,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: foodCall
         m_Mode: 1
         m_Arguments:
@@ -2741,7 +2552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33075de06d3b6034f8616c349c23b92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 319791029}
 --- !u!1 &555736600
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,7 +2630,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: foodCall
         m_Mode: 1
         m_Arguments:
@@ -2944,7 +2754,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: foodCall
         m_Mode: 1
         m_Arguments:
@@ -3100,7 +2910,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791034}
+      - m_Target: {fileID: 0}
         m_MethodName: objApplyValue
         m_Mode: 1
         m_Arguments:
@@ -3261,7 +3071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f35322afdf7def4fa5ab55a02ca463f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 319791029}
 --- !u!1 &696704900
 GameObject:
   m_ObjectHideFlags: 0
@@ -3455,7 +3264,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: foodCall
         m_Mode: 1
         m_Arguments:
@@ -3769,7 +3578,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: eventDecided
         m_Mode: 1
         m_Arguments:
@@ -3780,7 +3589,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: eventDecline
         m_Mode: 1
         m_Arguments:
@@ -3904,7 +3713,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: mushroomCall
         m_Mode: 1
         m_Arguments:
@@ -4226,7 +4035,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: cabnietCall
         m_Mode: 1
         m_Arguments:
@@ -4346,7 +4155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ee2e141480c9f44bbc33fc3e0b1f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 319791029}
 --- !u!1 &1375870870
 GameObject:
   m_ObjectHideFlags: 0
@@ -4497,7 +4305,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: enterTodayEvent
         m_Mode: 1
         m_Arguments:
@@ -4703,7 +4511,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: exitUIInfo
         m_Mode: 1
         m_Arguments:
@@ -4827,7 +4635,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: enableUIInfo
         m_Mode: 1
         m_Arguments:
@@ -5111,7 +4919,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: hypePillsCall
         m_Mode: 1
         m_Arguments:
@@ -5274,7 +5082,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: energyDrinkCall
         m_Mode: 1
         m_Arguments:
@@ -5614,7 +5422,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: enterPlayerInfo
         m_Mode: 1
         m_Arguments:
@@ -5828,7 +5636,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: erLastPage
         m_Mode: 1
         m_Arguments:
@@ -5988,7 +5796,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: flashLightCall
         m_Mode: 1
         m_Arguments:
@@ -6112,7 +5920,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: firstAidCall
         m_Mode: 1
         m_Arguments:
@@ -6321,7 +6129,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: teNextPage
         m_Mode: 1
         m_Arguments:
@@ -6599,7 +6407,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: erNextPage
         m_Mode: 1
         m_Arguments:
@@ -6800,7 +6608,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: bookCall
         m_Mode: 1
         m_Arguments:
@@ -6960,7 +6768,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: waterCall
         m_Mode: 1
         m_Arguments:
@@ -7084,7 +6892,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: rifleCall
         m_Mode: 1
         m_Arguments:
@@ -7280,7 +7088,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: waterCall
         m_Mode: 1
         m_Arguments:
@@ -7553,7 +7361,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: eventDecided
         m_Mode: 1
         m_Arguments:
@@ -7564,7 +7372,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: eventConfirm
         m_Mode: 1
         m_Arguments:
@@ -7688,7 +7496,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791038}
+      - m_Target: {fileID: 0}
         m_MethodName: teLastPage
         m_Mode: 1
         m_Arguments:
@@ -8233,7 +8041,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319791035}
+      - m_Target: {fileID: 0}
         m_MethodName: axeCall
         m_Mode: 1
         m_Arguments:

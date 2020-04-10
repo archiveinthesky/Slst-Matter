@@ -1,0 +1,7 @@
+Saveslot: saveslot
+
+TimeManagement:
+tim[saveslot]_[name]
+
+ObjectManagement:
+om[saveslot]_cnt_[id]
