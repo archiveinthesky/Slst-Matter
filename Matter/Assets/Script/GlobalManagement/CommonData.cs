@@ -19,9 +19,11 @@ public class CommonData : MonoBehaviour
 
     void Update()
     {
-        if (health > 100)
-        {
-            
-        }
+        if (health > 100){health = 100;}
+        else if (health < 0) { health = 0; }
+        if (hunger > 100) { hunger = 100; }
+        else if (hunger < 0) { hunger = 0; }
+        if (thirst > 100) { thirst = 100; }
+        else if (thirst < 0) { thirst = 0; }
     }
 }

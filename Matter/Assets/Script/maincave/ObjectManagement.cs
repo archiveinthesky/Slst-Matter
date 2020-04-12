@@ -7,7 +7,8 @@ public class ObjectManagement : MonoBehaviour
     public CommonData gd;
     public List<string> objectTitle, objectDescribe, objectApply;
     public List<int> objectCount;
-    public CommonData gd;
+    public List<GameObject> foodGmo, waterGmo;
+    public List<GameObject> allObjs;
     
 
     private float nowPos, originalPos, oriMousePos, camOPos;
@@ -35,7 +36,7 @@ public class ObjectManagement : MonoBehaviour
         objectDescribe.Add("為了研發解藥時能有個參考\n所以便戴上了");
         objectDescribe.Add("放東西用的置物櫃");
         objectDescribe.Add("託公司送來的飲料\n咖啡沒了後，我就一直靠著能量飲料維生");
-        objectDescribe.Add("一些基本的急救用絣 \n可使用以補回50%生命值");
+        objectDescribe.Add("一些基本的急救用品 \n可使用以補回50%生命值");
         objectDescribe.Add("緊急用的手電筒");
         objectDescribe.Add("公司送來的食物\n可食用以補回30%飢餓值");
         objectDescribe.Add("因為身體的老毛病\n所以偶爾得注射腎上腺素");
@@ -60,23 +61,24 @@ public class ObjectManagement : MonoBehaviour
         objectApply.Add("");
         objectApply.Add("喝一灌水");
 
-        objectCount.Add(0);
-        objectCount.Add(0);
-        objectCount.Add(0);
-        objectCount.Add(0);
-        objectCount.Add(0);
-        objectCount.Add(0);
-        objectCount.Add(0);
-        objectCount.Add(0);
-        objectCount.Add(0);
-        objectCount.Add(0);
-        objectCount.Add(0);
-        objectCount.Add(0);
-        objectCount.Add(0);
-        objectCount.Add(0);
+        objectCount.Add(1);
+        objectCount.Add(1);
+        objectCount.Add(1);
+        objectCount.Add(1);
+        objectCount.Add(1);
+        objectCount.Add(1);
+        objectCount.Add(1);
+        objectCount.Add(5);
+        objectCount.Add(1);
+        objectCount.Add(1);
+        objectCount.Add(1);
+        objectCount.Add(1);
+        objectCount.Add(1);
+        objectCount.Add(4);
 
-        loaddata();
+        //loaddata();
     }
+
 
     void loaddata()
     {
@@ -97,29 +99,30 @@ public class ObjectManagement : MonoBehaviour
     public List<string> recieveObjectData(int id)
     {
         var re = new List<string>();
+
         re.Add(objectTitle[id]);
         re.Add(objectDescribe[id]);
         re.Add(objectApply[id]);
         return re;
     }
 
-    public int ItemUsed(int id)
+    public void ItemUsed(int id)
     {
-        if (objectCount[id] > 0)
-        {
             switch (id)
             {
                 case 5:
                     objectCount[id] -= 1;
-
-
+                    gd.health += 50;
+                    break;
+                case 7:
+                    objectCount[id] -= 1;
+                    gd.hunger += 30;
+                    break;
+                case 13:
+                    objectCount[id] -= 1;
+                    gd.thirst += 30;
+                    break;
             }
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
 
     }
 
@@ -174,6 +177,25 @@ public class ObjectManagement : MonoBehaviour
         else if (Camera.main.GetComponent<Transform>().position.x > 2100)
         {
             Camera.main.GetComponent<Transform>().position = new Vector3(2100, 0, 0);
+        }
+
+
+
+        for (int i = 0; i < objectCount.Count - 1; i++)
+        {
+            bool objIsAvtive = objectCount[i] > 0 ? true : false;
+            allObjs[i].SetActive(objIsAvtive);
+        }
+
+        for (int i = 0; i < 6; i++)
+        {
+            bool foodactive = i < objectCount[7] ? true : false;
+            foodGmo[i].SetActive(foodactive);
+        }
+        for (int i = 0; i < 6; i++)
+        {
+            bool wateractive = i < objectCount[13] ? true : false;
+            waterGmo[i].SetActive(wateractive);
         }
     }
 
